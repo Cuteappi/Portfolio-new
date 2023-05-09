@@ -59,7 +59,7 @@ export default function Starterpage({children}) {
             e.preventDefault();
         })
 
-        document.addEventListener("touchmove", (e) => {
+        scope.current.addEventListener("touchmove", (e) => {
             e.preventDefault();
             [...e.changedTouches].forEach(touch =>{
 

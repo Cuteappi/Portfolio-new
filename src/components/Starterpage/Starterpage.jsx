@@ -60,6 +60,7 @@ export default function Starterpage({children}) {
         })
 
         document.addEventListener("touchmove", (e) => {
+            e.preventDefault();
             [...e.changedTouches].forEach(touch =>{
 
                 var mouseX = (touch.clientX)/20;
@@ -88,6 +89,10 @@ export default function Starterpage({children}) {
                     loadingBar.style.transform = `translateY(-${100-Height}%)`
                 }
             })            
+        })
+
+        document.addEventListener("touchend", (e) => {
+            e.preventDefault();
         })
     })
 

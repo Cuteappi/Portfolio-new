@@ -55,8 +55,11 @@ export default function Starterpage({children}) {
             }            
         })
 
-        document.addEventListener("touchmove", (e) => {
+        document.addEventListener("touchstart", (e) => {
             e.preventDefault();
+        })
+
+        document.addEventListener("touchmove", (e) => {
             [...e.changedTouches].forEach(touch =>{
 
                 var mouseX = (touch.clientX)/20;

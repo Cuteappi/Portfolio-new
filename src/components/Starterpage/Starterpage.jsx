@@ -56,14 +56,14 @@ export default function Starterpage({children}) {
         })
 
         document.addEventListener("touchmove", (e) => {
-            console.log('touchmove');
+            e.preventDefault();
             [...e.changedTouches].forEach(touch =>{
 
                 var mouseX = (touch.clientX)/20;
                 var mouseY = (touch.clientY)/20;
 
                 Height = Height + (Math.abs(mouseX) + Math.abs(mouseY))/400
-                console.log(Height)
+
                 if (scope.current !=null){
 
                     if(Height >= 50 && Height <= 50.5){

@@ -26,12 +26,12 @@ export default function Starterpage({children}) {
     
     useEffect(() => {
 
-        document.addEventListener("pointermove", (e) => {
+        document.addEventListener("mousemove", (e) => {
 
             var mouseX = (e.clientX)/50;
             var mouseY = (e.clientY)/50;
 
-            Height = Height + (Math.abs(mouseX) + Math.abs(mouseY))/850
+            Height = Height + (Math.abs(mouseX) + Math.abs(mouseY))/800
 
             if (scope.current !=null){
 
@@ -56,32 +56,35 @@ export default function Starterpage({children}) {
         })
 
         document.addEventListener("touchmove", (e) => {
+            console.log('touchmove');
+            [...e.changedTouches].forEach(touch =>{
 
-            var mouseX = (e.clientX)/50;
-            var mouseY = (e.clientY)/50;
+                var mouseX = (touch.clientX)/20;
+                var mouseY = (touch.clientY)/20;
 
-            Height = Height + (Math.abs(mouseX) + Math.abs(mouseY))/850
+                Height = Height + (Math.abs(mouseX) + Math.abs(mouseY))/400
+                console.log(Height)
+                if (scope.current !=null){
 
-            if (scope.current !=null){
+                    if(Height >= 50 && Height <= 50.5){
+                        animate(ani50)
+                    }
 
-                if(Height >= 50 && Height <= 50.5){
-                    animate(ani50)
+                    if(Height >= 100 && Height <= 100.5){
+                        animate(ani100)
+                        // document.removeEventListener("pointermove", (e) => {console.log('event removed')})
+                        // setTimeout(() => {
+                        //     push('/home')
+                        // },1.500)
+                    }
+
+                    let bg = scope.current.querySelector(`.${styles.back}`)
+                    bg.style.backgroundPosition = `${mouseX}% ${mouseY}%`;
+
+                    let loadingBar = scope.current.querySelector(`.${styles.loader}`)
+                    loadingBar.style.transform = `translateY(-${100-Height}%)`
                 }
-
-                if(Height >= 100 && Height <= 100.5){
-                    animate(ani100)
-                    // document.removeEventListener("pointermove", (e) => {console.log('event removed')})
-                    // setTimeout(() => {
-                    //     push('/home')
-                    // },1.500)
-                }
-
-                let bg = scope.current.querySelector(`.${styles.back}`)
-                bg.style.backgroundPosition = `${mouseX}% ${mouseY}%`;
-
-                let loadingBar = scope.current.querySelector(`.${styles.loader}`)
-                loadingBar.style.transform = `translateY(-${100-Height}%)`
-            }            
+            })            
         })
     })
 

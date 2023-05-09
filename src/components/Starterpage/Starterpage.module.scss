@@ -1,0 +1,92 @@
+.bg{
+    background-color: rgb(0, 0, 0);
+    color: white;
+    position: absolute;
+    top:0;
+    left:0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.back{
+    background-image: radial-gradient(
+        rgba(237, 95, 69, 0.445) 10%, 
+        transparent 10%
+    );
+    background-position: 0% 0%;
+    background-size: 10vmin 10vmin;
+    rotate: 225deg;
+    height: 150%;
+    right: 0px;
+    position: absolute;
+    top: 0px;
+    transition: background-position 200ms ease-out;
+    width: 185%;
+    overflow: hidden;
+}
+.loader{
+    position: fixed;
+    top:0;
+    right:25%;
+    width:1.5%;
+    height: 100%;
+    transform: translateY(-100%);
+    background-color: rgb(255, 85, 85);
+    z-index: 10;
+    transition: transform 500ms cubic-bezier(0.080, 0.475, 0.390, 0.910);
+}
+.loader_holder{
+    position: absolute;
+    height: 100%;
+    width: 24.5%;
+    left:75.25%;
+    font-family: 'Bebas Neue', cursive;
+    color: rgb(255, 193, 105);
+    overflow: hidden;
+
+    & .loader_finish{
+        position: absolute;
+        bottom: 0;
+        width:47%;
+        height:77.6px;
+        font-size: 3vw;
+        translate: -300px;
+    }
+
+    & .holder_50{
+        position: absolute;
+        top:50%;
+        translate: 0 -50%; 
+        width:62%;
+        height:77.6px;
+        overflow: hidden;
+
+        & .loader_50{
+            position: absolute;
+            top:0;
+            font-size: 3vw;
+            translate: -300px;
+        }
+    }
+}
+
+.welcome{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+
+    height:200px;
+    width: 100%;
+    
+    font-size: 200px;
+    font-family: 'Bebas Neue', cursive;
+    
+    overflow: hidden;
+    z-index: 10;
+}

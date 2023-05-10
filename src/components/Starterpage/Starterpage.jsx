@@ -1,6 +1,6 @@
 'use client'
-import { useEffect } from 'react'
-import { useRouter } from 'next/navigation'
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 import { useAnimate, cubicBezier } from 'framer-motion'
 import styles from './Starterpage.module.scss'
@@ -9,6 +9,7 @@ export default function Starterpage({children}) {
 
     const { push } = useRouter();
     const [scope, animate]= useAnimate()
+    const [eventstate, seteventstate] = useState(false)
      
     var Height = 0
     const ani50 = [
@@ -23,15 +24,15 @@ export default function Starterpage({children}) {
         [`.${styles.loader_finish}`,{x: 300, opacity:1},{duration:0.5, ease: cubicBezier( 0.06, 0.48, 0.32, 0.91 )}],
         [`.${styles.loader_holder}`,{y: [0,-500], opacity: [1,0]},{duration:3.5, ease: cubicBezier( 0.06, 0.48, 0.32, 0.91 )}]
     ]
-    
-    useEffect(() => {
+
+    useEffect(()=>{
 
         document.addEventListener("mousemove", (e) => {
 
-            var mouseX = (e.clientX)/50;
+            var mouseX = (e.clientX)/75;
             var mouseY = (e.clientY)/50;
 
-            Height = Height + (Math.abs(mouseX) + Math.abs(mouseY))/800
+            Height = Height + (Math.abs(mouseX) + Math.abs(mouseY))/700
 
             if (scope.current !=null){
 
@@ -39,12 +40,12 @@ export default function Starterpage({children}) {
                     animate(ani50)
                 }
 
-                if(Height >= 100 && Height <= 100.5){
+                if(Height >= 100 && Height <= 100.1){
                     animate(ani100)
-                    // document.removeEventListener("pointermove", (e) => {console.log('event removed')})
-                    // setTimeout(() => {
-                    //     push('/home')
-                    // },1.500)
+                    seteventstate(true)
+                    setTimeout(() => {
+                        push('/home')
+                    },2000)
                 }
 
                 let bg = scope.current.querySelector(`.${styles.back}`)
@@ -76,10 +77,10 @@ export default function Starterpage({children}) {
 
                     if(Height >= 100 && Height <= 100.5){
                         animate(ani100)
-                        // document.removeEventListener("pointermove", (e) => {console.log('event removed')})
-                        // setTimeout(() => {
-                        //     push('/home')
-                        // },1.500)
+                        seteventstate(true)
+                        setTimeout(() => {
+                            push('/home')
+                        },2000)
                     }
 
                     let bg = scope.current.querySelector(`.${styles.back}`)
@@ -94,7 +95,13 @@ export default function Starterpage({children}) {
         document.addEventListener("touchend", (e) => {
             e.preventDefault();
         })
-    })
+
+        if(eventstate){
+            document.removeEventListener("mousemove", () => {console.log('mouse event removed')})
+            document.removeEventListener("touchmove", () => {console.log('touch event removed')})
+        }
+        
+    },[])
 
     return (
         <>

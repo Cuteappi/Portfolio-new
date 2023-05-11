@@ -2,9 +2,9 @@ import { useEffect } from 'react'
 import { stagger, useAnimate, cubicBezier } from 'framer-motion'
 import styles from './textani.module.scss'
 
-export default function Textani({ word }) {
+export default function Textani({word}) {
     const [scope, animate] = useAnimate();
-    
+
     let letters = word.split('')
 
     useEffect(() =>{
@@ -51,4 +51,3 @@ export default function Textani({ word }) {
         
     )
 }
-

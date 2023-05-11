@@ -21,7 +21,7 @@ export default function Dots({numdots}){
 
     useEffect(() =>{
         const dotini = [
-            [scope.current,{opacity: [0,1], y:[-100,0]}, {delay: 3.5, ease: cubicBezier( 0.06, 0.48, 0.32, 0.91 )}]
+            [scope.current,{opacity: [0,1], y:[-100,0]}, {duration: 0.5, delay: 3.5, ease: cubicBezier( 0.06, 0.48, 0.32, 0.91 )}]
         ]
         
         animate(dotini)

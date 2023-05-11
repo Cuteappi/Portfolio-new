@@ -1,8 +1,10 @@
 import Head from 'next/head'
 import Homepage from '@/components/Homepage/Homepage'
+//import { useEffect } from 'react'
+import { animations } from '@/lib/animations.jsx'
 
-export default function Home() {
-    
+export default function Home(props) {
+    props.setanim(animations[1])
     return (
         <>
 

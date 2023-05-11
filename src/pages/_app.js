@@ -2,7 +2,6 @@ import '@/styles/globals.scss'
 import { LazyMotion, domAnimation, m, AnimatePresence } from 'framer-motion'
 import { useRouter } from "next/router";
 import { useState } from 'react';
-import { animations } from '@/lib/animations.jsx'
 
 export default function App({ Component, pageProps }) {
     const router = useRouter()

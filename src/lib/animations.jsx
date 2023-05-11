@@ -1,10 +1,12 @@
 const initalTohome = {
     initialState: {
         opacity: 0,
+        x: -1000,
         clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
     },
     animateState: {
         opacity: 1,
+        x: 0,
         clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
     },
     exitState: {
@@ -15,7 +17,7 @@ const initalTohome = {
 
 const Home = {
     initialState: {
-        opacity: 0,
+        opacity: 0,        
         clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
     },
     animateState: {

@@ -6,11 +6,20 @@ import { useState } from 'react';
 export default function App({ Component, pageProps }) {
     const router = useRouter()
     const [anim, setanim]=useState()
+    const [bg, setbg]=useState()
+    console.log(anim)
 
     return (
         <LazyMotion features={domAnimation}>
+            <style jsx global>
+                    {`body{
+                        background-color:${bg};
+                        transition: background-color 750ms ease-out;
+                    }`}
+                </style>
             <AnimatePresence mode='wait'>
                 <m.div
+                className='pgdiv'
                     key={router.route}
                     initial="initialState"
                     animate="animateState"
@@ -19,9 +28,9 @@ export default function App({ Component, pageProps }) {
                         duration: 0.75,
                     }}
                     variants={anim}
-                    style={{width: '100%', minHeight: '100vh'}}
+                    
                 >
-                    <Component {...pageProps} setanim={setanim}/>
+                    <Component {...pageProps} setanim={setanim} setbg={setbg}/>
                 </m.div>
             </AnimatePresence>
         </LazyMotion>

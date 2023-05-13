@@ -9,6 +9,7 @@ import Head from 'next/head'
 export default function Welcome(props) {
     
     props.setanim(animations[0])
+    props.setbg('rgb(255, 85, 85)')
 
     return (
         <>

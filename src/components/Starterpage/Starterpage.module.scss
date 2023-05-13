@@ -1,15 +1,25 @@
+.mainBg{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    overflow: overlay;
+    z-index: -100;
+}
+
 .bg{
+    position: sticky;
     background-color: rgb(0, 0, 0);
     color: white;
     position: absolute;
     top:0;
     left:0;
-    min-height: 100%;
+    min-height: 800%;
     width: 100%;
     overflow: hidden;
 }
 
 .back{
+    position: fixed;
     background-image: radial-gradient(
         rgba(237, 95, 69, 0.445) 10%, 
         transparent 10%
@@ -19,56 +29,23 @@
     rotate: 225deg;
     height: 150%;
     right: 0px;
-    position: absolute;
     top: 0px;
     transition: background-position 200ms ease-out;
     width: 185%;
     overflow: hidden;
+    pointer-events: none;
 }
 .loader{
     position: fixed;
     top:0;
-    right:25%;
-    width:1.5%;
+    width:100%;
     height: 100%;
+    pointer-events: none;
     transform: translateY(-100%);
     background-color: rgb(255, 85, 85);
+    clip-path: polygon(75% 0, 76.5% 0, 76.5% 100%, 75% 100%);
     z-index: 10;
-    transition: transform 500ms cubic-bezier(0.080, 0.475, 0.390, 0.910);
-}
-.loader_holder{
-    position: absolute;
-    height: 100%;
-    width: 24.5%;
-    left:75.25%;
-    font-family: 'Bebas Neue', cursive;
-    color: rgb(255, 193, 105);
-    overflow: hidden;
-
-    & .loader_finish{
-        position: absolute;
-        bottom: 0;
-        width:47%;
-        height:77.6px;
-        font-size: 3vw;
-        translate: -300px;
-    }
-
-    & .holder_50{
-        position: absolute;
-        top:50%;
-        translate: 0 -50%; 
-        width:62%;
-        height:77.6px;
-        overflow: hidden;
-
-        & .loader_50{
-            position: absolute;
-            top:0;
-            font-size: 3vw;
-            translate: -300px;
-        }
-    }
+    transition: transform 1000ms cubic-bezier(0.080, 0.475, 0.390, 0.910), clip-path 1000ms cubic-bezier(0.080, 0.475, 0.390, 0.910);
 }
 
 .welcome{
@@ -76,7 +53,7 @@
     justify-content: center;
     align-items: center;
     
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     translate: -50% -50%;
@@ -86,7 +63,7 @@
     
     font-size: 200px;
     font-family: 'Bebas Neue', cursive;
+    pointer-events: none;
     
     overflow: hidden;
-    z-index: 10;
 }

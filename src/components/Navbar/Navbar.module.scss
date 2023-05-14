@@ -1,0 +1,24 @@
+.ul{
+    display:flex;
+    list-style-type: none;
+    justify-content: flex-end;
+    padding: 10px;
+
+    & .links{
+        display:flex;
+        align-items: center;
+        text-decoration: dotted;
+        font-size: 36px;
+        font-family: 'Josefin Sans', sans-serif;
+        padding: 0 10px 0 10px;
+        color: black;
+        
+    }
+
+    & .links0{
+        font-size: 46px;
+        //font-family: 'Bellota Text', cursive;
+        font-family: 'Megrim', cursive;
+        margin-right: auto;
+    }
+}

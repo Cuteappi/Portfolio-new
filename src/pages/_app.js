@@ -7,7 +7,6 @@ export default function App({ Component, pageProps }) {
     const router = useRouter()
     const [anim, setanim]=useState()
     const [bg, setbg]=useState()
-    console.log(anim)
 
     return (
         <LazyMotion features={domAnimation}>
@@ -15,6 +14,7 @@ export default function App({ Component, pageProps }) {
                     {`body{
                         background-color:${bg};
                         transition: background-color 750ms ease-out;
+                        overflow: overlay;
                     }`}
                 </style>
             <AnimatePresence mode='wait'>

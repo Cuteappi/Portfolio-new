@@ -7,3 +7,30 @@
     background-color: rgb(255, 85, 85);
     overflow: overlay;
 }
+.contact_icons{
+    position: absolute;
+}
+
+.about_section{
+    padding: 100px 0 380px 150px;
+
+    & h1{
+        font-size: 120px;
+        font-family: 'Allerta Stencil', sans-serif;
+    }
+
+    & .about_me{
+        margin-top: 50px;
+    }
+
+    & .span{
+        display:block;
+        margin: 5px 0 0 0;
+        font-size: 36px;
+        font-family: 'Allerta Stencil', sans-serif;
+        letter-spacing: 5px;
+    }
+
+    
+}
+

@@ -22,20 +22,26 @@ body{
     background-color: rgba(0, 0, 0, 0.26);
 }
 *::-webkit-scrollbar-thumb:hover{
-    background-color: rgba(255, 255, 255, 0.393);
+    background-color: rgba(0, 0, 0, 0.578);
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Allerta+Stencil&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Bellota+Text:wght@700&display=swap');
+//solomon rajkumar
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Megrim&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 .pgdiv{
     position: absolute;
     height:100%;
     width:100%;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     overflow: visible;
+}
+
+#__next{
+    width: 100%;
 }

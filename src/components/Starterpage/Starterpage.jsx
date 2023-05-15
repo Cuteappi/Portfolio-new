@@ -40,7 +40,7 @@ export default function Starterpage({children}) {
                 seteventstate(true)
                 setTimeout(() => {
                     push('/home')
-                },2000)
+                },1000)
             }
         })
 

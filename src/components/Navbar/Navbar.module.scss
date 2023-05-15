@@ -1,24 +1,31 @@
 .ul{
+    position: sticky;
     display:flex;
     list-style-type: none;
     justify-content: flex-end;
     padding: 10px;
+    height: 64px;
 
     & .links{
         display:flex;
         align-items: center;
         text-decoration: dotted;
-        font-size: 36px;
-        font-family: 'Josefin Sans', sans-serif;
-        padding: 0 10px 0 10px;
+        font-size: 30px;
+        font-family: 'poppins', sans-serif;
+        padding: 0 20px 0 20px;
         color: black;
         
     }
 
     & .links0{
-        font-size: 46px;
-        //font-family: 'Bellota Text', cursive;
-        font-family: 'Megrim', cursive;
+        font-family: 'Righteous', cursive;
+        font-size: 36px;
         margin-right: auto;
+        padding: 10px 0 0 20px;
+        transform: skewY(-8deg);
+    }
+
+    & .links3{
+        margin-right: 10px;
     }
 }

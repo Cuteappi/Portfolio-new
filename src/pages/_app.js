@@ -14,6 +14,7 @@ export default function App({ Component, pageProps }) {
                     {`body{
                         background-color:${bg};
                         transition: background-color 750ms ease-out;
+                        overflow: overlay;
                     }`}
                 </style>
             <AnimatePresence mode='wait'>

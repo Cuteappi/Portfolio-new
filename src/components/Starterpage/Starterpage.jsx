@@ -42,15 +42,12 @@ export default function Starterpage({children}) {
                     push('/home')
                 },1000)
             }
-
         })
 
         document.addEventListener("mousemove", (e) => {
 
             var mouseX = (e.clientX)/75;
             var mouseY = (e.clientY)/50;
-
-            // Height = Height + (Math.abs(mouseX) + Math.abs(mouseY))/500
 
             if (scope.current !=null){
 
@@ -64,8 +61,6 @@ export default function Starterpage({children}) {
                 
                 bg.style.backgroundPosition = `${mouseX}% ${mouseY}%`;
 
-                // let loadingBar = scope.current.querySelector(`.${styles.loader}`)
-                // loadingBar.style.transform = `translateY(-${100-Height}%)`
             }            
         })
 
@@ -79,8 +74,6 @@ export default function Starterpage({children}) {
 
                 var mouseX = (touch.clientX)/20;
                 var mouseY = (touch.clientY)/20;
-
-                // Height = Height + (Math.abs(mouseX) + Math.abs(mouseY))/400
 
                 if (scope.current !=null){
 
@@ -97,9 +90,6 @@ export default function Starterpage({children}) {
                     }
 
                     bg.style.backgroundPosition = `${mouseX}% ${mouseY}%`;
-
-                    // let loadingBar = scope.current.querySelector(`.${styles.loader}`)
-                    // loadingBar.style.transform = `translateY(-${100-Height}%)`
                 }
             })            
         })

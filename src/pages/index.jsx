@@ -28,8 +28,8 @@ export default function Welcome(props) {
     )
 }
 
-export async function getStaticProps(context) {
-    const wordList = ['Hello', 'Konnichiwa', 'Bonjour', 'Guten', 'Ciao', 'Ola', 'Marhaba', 'Nǐn hǎo']
+export async function getServerSideProps(context) {
+    const wordList = ['Konnichiwa', 'Hello', 'Bonjour', 'Guten', 'Ciao', 'Ola', 'Marhaba', 'Nǐn hǎo']
 
     const randomWord = wordList[Math.floor(Math.random() * wordList.length)]
 

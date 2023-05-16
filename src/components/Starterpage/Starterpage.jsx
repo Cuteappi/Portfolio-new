@@ -35,6 +35,7 @@ export default function Starterpage({children}) {
                     ${75-(((scrollPercent-75)/25)*75)}% 100%
                 )`
             }
+//home
 
             if(scrollPercent >= 100){
                 seteventstate(true)

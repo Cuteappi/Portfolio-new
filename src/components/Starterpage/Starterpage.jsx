@@ -11,8 +11,7 @@ export default function Starterpage({children}) {
     const main = useRef()
 
     const [eventstate, seteventstate] = useState(false)
-     
-    var Height = 0
+
     useEffect(()=>{
 
         var bg = scope.current.querySelector(`.${styles.back}`)
@@ -52,11 +51,11 @@ export default function Starterpage({children}) {
         },5)
 
         const touchmoves = throttle((touch) => {
-            var mouseX = (touch.clientX)/20;
-            var mouseY = (touch.clientY)/20;
+            var mouseX = (touch.clientX)/25;
+            var mouseY = (touch.clientY)/25;
 
             bg.style.backgroundPosition = `${mouseX}% ${mouseY}%`;            
-        },10)
+        },2)
 
         main.current.addEventListener("scroll", (e) => {
 
@@ -89,17 +88,14 @@ export default function Starterpage({children}) {
         })
 
         document.addEventListener("touchstart", (e) => {
-            e.preventDefault();
-        })
+            //e.preventDefault()
+            console.log('touch')
+        },{passive:false})
 
         document.addEventListener("touchmove", (e) => {
             [...e.changedTouches].forEach(touch =>{
                 touchmoves(touch)
             })            
-        })
-
-        document.addEventListener("touchend", (e) => {
-            e.preventDefault();
         })
 
         if(eventstate){

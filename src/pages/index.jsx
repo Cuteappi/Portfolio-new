@@ -17,7 +17,6 @@ export default function Welcome(props) {
                 <title>Welcome</title>
                 <meta name="description" content="Welcome To my portfolio page" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <link rel="icon" href="src/public/favicon.ico" type="image/icon/" />
             </Head>
 
             <Starterpage>

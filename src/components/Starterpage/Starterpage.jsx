@@ -18,7 +18,7 @@ export default function Starterpage({children}) {
         var bg = scope.current.querySelector(`.${styles.back}`)
         var loadingBar = scope.current.querySelector(`.${styles.loader}`)
 
-        function throttle(cb, delay = 100) {
+        function throttle(cb, delay) {
             let wait = false;
             let storedArgs = null;
           
@@ -44,14 +44,19 @@ export default function Starterpage({children}) {
             }
         }
 
-        const moves = throttle(() => {
+        const moves = throttle((e) => {
             var mouseX = (e.clientX)/75;
             var mouseY = (e.clientY)/50;
 
-            bg.style.backgroundPosition = `${mouseX}% ${mouseY}%`;
-            console.log('mouse')
-            
-        })
+            bg.style.backgroundPosition = `${mouseX}% ${mouseY}%`;            
+        },5)
+
+        const touchmoves = throttle((touch) => {
+            var mouseX = (touch.clientX)/20;
+            var mouseY = (touch.clientY)/20;
+
+            bg.style.backgroundPosition = `${mouseX}% ${mouseY}%`;            
+        },10)
 
         main.current.addEventListener("scroll", (e) => {
 
@@ -80,8 +85,7 @@ export default function Starterpage({children}) {
         })
 
         document.addEventListener("mousemove", (e) => {
-            console.log
-            moves            
+            moves(e)           
         })
 
         document.addEventListener("touchstart", (e) => {
@@ -89,14 +93,8 @@ export default function Starterpage({children}) {
         })
 
         document.addEventListener("touchmove", (e) => {
-            e.preventDefault();
             [...e.changedTouches].forEach(touch =>{
-
-                var mouseX = (touch.clientX)/20;
-                var mouseY = (touch.clientY)/20;
-
-                bg.style.backgroundPosition = `${mouseX}% ${mouseY}%`;
-                
+                touchmoves(touch)
             })            
         })
 

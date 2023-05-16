@@ -35,6 +35,9 @@ export default function Starterpage({children}) {
                     ${75-(((scrollPercent-75)/25)*75)}% 100%
                 )`
             }
+//awdawdad
+
+
 
             if(scrollPercent >= 100){
                 seteventstate(true)

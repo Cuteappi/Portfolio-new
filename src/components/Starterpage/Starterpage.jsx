@@ -18,6 +18,41 @@ export default function Starterpage({children}) {
         var bg = scope.current.querySelector(`.${styles.back}`)
         var loadingBar = scope.current.querySelector(`.${styles.loader}`)
 
+        function throttle(cb, delay = 100) {
+            let wait = false;
+            let storedArgs = null;
+          
+            function checkStoredArgs () {
+              if (storedArgs == null) {
+                wait = false;
+              } else {
+                cb(...storedArgs);
+                storedArgs = null;
+                setTimeout(checkStoredArgs, delay);
+              }
+            }
+          
+            return (...args) => {
+              if (wait) {
+                storedArgs = args;
+                return;
+              }
+          
+              cb(...args);
+              wait = true;
+              setTimeout(checkStoredArgs, delay);
+            }
+        }
+
+        const moves = throttle(() => {
+            var mouseX = (e.clientX)/75;
+            var mouseY = (e.clientY)/50;
+
+            bg.style.backgroundPosition = `${mouseX}% ${mouseY}%`;
+            console.log('mouse')
+            
+        })
+
         main.current.addEventListener("scroll", (e) => {
 
             var scrollPercent = (main.current.scrollTop) * 100 / (scope.current.clientHeight - window.innerHeight);
@@ -35,9 +70,6 @@ export default function Starterpage({children}) {
                     ${75-(((scrollPercent-75)/25)*75)}% 100%
                 )`
             }
-//awdawdad
-
-
 
             if(scrollPercent >= 100){
                 seteventstate(true)
@@ -48,23 +80,8 @@ export default function Starterpage({children}) {
         })
 
         document.addEventListener("mousemove", (e) => {
-
-            var mouseX = (e.clientX)/75;
-            var mouseY = (e.clientY)/50;
-
-            if (scope.current !=null){
-
-                if(Height >= 100 && Height <= 100.1){
-                    seteventstate(true)
-                    setTimeout(() => {
-                        push('/home')
-                    },100)
-                }
-
-                
-                bg.style.backgroundPosition = `${mouseX}% ${mouseY}%`;
-
-            }            
+            console.log
+            moves            
         })
 
         document.addEventListener("touchstart", (e) => {
@@ -78,22 +95,8 @@ export default function Starterpage({children}) {
                 var mouseX = (touch.clientX)/20;
                 var mouseY = (touch.clientY)/20;
 
-                if (scope.current !=null){
-
-                    if(Height >= 50 && Height <= 50.5){
-                        animate(ani50)
-                    }
-
-                    if(Height >= 100 && Height <= 100.5){
-                        animate(ani100)
-                        seteventstate(true)
-                        setTimeout(() => {
-                            push('/home')
-                        },1000)
-                    }
-
-                    bg.style.backgroundPosition = `${mouseX}% ${mouseY}%`;
-                }
+                bg.style.backgroundPosition = `${mouseX}% ${mouseY}%`;
+                
             })            
         })
 

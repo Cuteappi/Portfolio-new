@@ -8,7 +8,7 @@ import Head from 'next/head'
 
 export default function Welcome(props) {
     
-    props.setanim(animations[0])
+    props.setanim(props.animation)
     props.setbg('rgb(255, 85, 85)')
 
     return (
@@ -34,6 +34,6 @@ export async function getServerSideProps(context) {
     const randomWord = wordList[Math.floor(Math.random() * wordList.length)]
 
     return {
-        props: { randomWord }
+        props: { randomWord , animation: animations[0] }
     };
 }

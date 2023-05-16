@@ -18,6 +18,10 @@ export default function Starterpage({children}) {
         var bg = scope.current.querySelector(`.${styles.back}`)
         var loadingBar = scope.current.querySelector(`.${styles.loader}`)
 
+
+
+
+        
         main.current.addEventListener("scroll", (e) => {
 
             var scrollPercent = (main.current.scrollTop) * 100 / (scope.current.clientHeight - window.innerHeight);
@@ -35,7 +39,6 @@ export default function Starterpage({children}) {
                     ${75-(((scrollPercent-75)/25)*75)}% 100%
                 )`
             }
-//home
 
             if(scrollPercent >= 100){
                 seteventstate(true)

@@ -21,7 +21,7 @@ export default function Homepage() {
                 </div>                
             </section>
             <section className={styles.projects}>
-                
+                <div className={styles.projects_part}>hello</div>
             </section>
         </div>
     </>

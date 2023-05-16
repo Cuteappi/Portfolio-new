@@ -4,7 +4,7 @@ import Homepage from '@/components/Homepage/Homepage'
 import { animations } from '@/lib/animations.jsx'
 
 export default function Home(props) {
-    props.setanim(animations[1])
+    props.setanim(props.animation)
     props.setbg('rgb(255, 85, 85)')
     
     return (
@@ -19,4 +19,10 @@ export default function Home(props) {
             <Homepage />
         </>
     )
+}
+
+export async function getServerSideProps(context) {
+    return {
+        props: { animation: animations[1] }
+    };
 }

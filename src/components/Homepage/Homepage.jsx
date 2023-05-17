@@ -3,16 +3,17 @@ import Link from 'next/link'
 import styles from './Homepage.module.scss'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
-import Aboutme from './aboutme.jsx'
 import { useRef, useEffect } from 'react'
+import { easeInOut } from 'framer-motion'
 
 
 export default function Homepage() {
     gsap.registerPlugin(ScrollTrigger)
-    
-    const navRef = useRef()
-    const Maindiv = useRef()
 
+    const navRef = useRef()
+    const Maindiv = useRef() 
+    const ProRef = useRef()
+    
     function handleProjectScrolTo(){
         window.scrollTo(0, 1100)
     }
@@ -22,28 +23,55 @@ export default function Homepage() {
     }
 
     useEffect(()=>{
+
         const ctx = gsap.context(() => {
+            gsap.fromTo(navRef.current.children,{ y:-100 },{ y:0 , ease: easeInOut, stagger: 0.1 })
+
+            gsap.to(navRef.current,{ opacity: 1 })
+
             gsap.to(navRef.current,{
                 opacity: 0,
-                duraiton: 0.75,
+                duration: 0.5,
                 scrollTrigger:{
-                    trigger: navRef.current,
-                    start: 'top -10%',
+                    trigger: Maindiv.current,
+                    start: 'top top',
                     end: 'end 100%',
-                    scrub: 2
+                    scrub: 0.5
                 }
             })
-            // gsap.to(navRef.current,{
-            //     opacity: 1,
-            //     duraiton: 0.75,
-            //     color: 'white',
-            //     scrollTrigger:{
-            //         trigger: navRef.current,
-            //         start: 'top -100%',
-            //         end: 'end 100%',
-            //         scrub: 2
-            //     }
-            // })
+
+            gsap.fromTo(navRef.current.children,{ y:0 },{ y: -100 , ease: easeInOut, stagger: 0.1,
+                scrollTrigger:{
+                    trigger: Maindiv.current,
+                    start: 'top top',
+                    end: 'end 100%',
+                    scrub: 0.5
+                }
+            })
+
+            gsap.fromTo(navRef.current.children,{ y:-100 },{y:0 , ease: easeInOut, stagger: 0.1, duration: 2,
+                scrollTrigger:{
+                    trigger: ProRef.current,
+                    start: 'top 1%',
+                    end: 'end 100%',
+                    scrub: 0.5,
+                }
+            })
+
+            gsap.fromTo(navRef.current,{
+                opacity: 0,
+                color: "rgb(0, 0, 0)"
+            },{
+                opacity: 1,
+                duration: 0.5,
+                color: "rgb(255, 255, 255)",
+                scrollTrigger:{
+                    trigger: ProRef.current,
+                    start: 'top 1%',
+                    end: 'end 100%',
+                    scrub: 0.5,
+                }
+            })
         })
 
         return ()=>{
@@ -54,15 +82,15 @@ export default function Homepage() {
 
   return (
     <>  
-            <div className={styles.ul} ref={navRef}>
+        <div className={styles.ul} ref={navRef}>
 
             <Link href='/' className={`${styles.links} ${styles.links0}`}>SOLO</Link>
 
             <div className={`${styles.links} ${styles.links1}`} onClick={handleTopScrollTo}>HOME</div>
 
-            <div href='/projects' className={`${styles.links} ${styles.links2}`} onClick={handleProjectScrolTo}>PROJECTS</div>
+            <div className={`${styles.links} ${styles.links2}`} onClick={handleProjectScrolTo}>PROJECTS</div>
 
-            <div href='/CONTACT' className={`${styles.links} ${styles.links3}`} >CONTACT</div>
+            <div className={`${styles.links} ${styles.links3}`} >CONTACT</div>
 
         </div>
 
@@ -94,7 +122,7 @@ export default function Homepage() {
                 </div>
             </section>
 
-            <section className={styles.projects}>
+            <section className={styles.projects} ref={ProRef}>
                 <div className={styles.projects_part}>hello</div>
             </section>
         </div>

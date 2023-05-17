@@ -48,7 +48,7 @@ export default function Starterpage({children}) {
             var mouseY = (e.clientY)/50;
 
             bg.style.backgroundPosition = `${mouseX}% ${mouseY}%`;            
-        },5)
+        },1)
 
         const touchmoves = throttle((touch) => {
             var mouseX = (touch.clientX)/25;

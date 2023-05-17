@@ -23,63 +23,66 @@ export default function Homepage() {
     }
 
     useEffect(()=>{
-
+        navRef.current.style.opacity = 0
         const ctx = gsap.context(() => {
-            gsap.fromTo(navRef.current.children,{ y:-100 },{ y:0 , ease: easeInOut, stagger: 0.1 })
 
-            gsap.to(navRef.current,{ opacity: 1 })
+            setTimeout(()=>{
+                navRef.current.style.opacity = 1
+                gsap.fromTo(navRef.current.children,{ y:-100 },{ y:0 , ease: easeInOut, stagger: 0.1 })
+            
+                gsap.to(navRef.current,{ opacity: 1 })
 
-            gsap.to(navRef.current,{
-                opacity: 0,
-                duration: 0.5,
-                scrollTrigger:{
-                    trigger: Maindiv.current,
-                    start: 'top top',
-                    end: 'end 100%',
-                    scrub: 0.5
-                }
-            })
+                
+                gsap.to(navRef.current,{
+                    opacity: 0,
+                    duration: 0.5,
+                    scrollTrigger:{
+                        trigger: Maindiv.current,
+                        start: 'top top',
+                        end: 'end 100%',
+                        scrub: 0.5
+                    }
+                })
 
-            gsap.fromTo(navRef.current.children,{ y:0 },{ y: -100 , ease: easeInOut, stagger: 0.1,
-                scrollTrigger:{
-                    trigger: Maindiv.current,
-                    start: 'top top',
-                    end: 'end 100%',
-                    scrub: 0.5
-                }
-            })
+                gsap.fromTo(navRef.current.children,{ y:0 },{ y: -100 , ease: easeInOut, stagger: 0.1,
+                    scrollTrigger:{
+                        trigger: Maindiv.current,
+                        start: 'top top',
+                        end: 'end 100%',
+                        scrub: 0.5
+                    }
+                })
 
-            gsap.fromTo(navRef.current.children,{ y:-100 },{y:0 , ease: easeInOut, stagger: 0.1, duration: 2,
-                scrollTrigger:{
-                    trigger: ProRef.current,
-                    start: 'top 1%',
-                    end: 'end 100%',
-                    scrub: 0.5,
-                }
-            })
+                gsap.fromTo(navRef.current.children,{ y:-100 },{y:0 , ease: easeInOut, stagger: 0.1, duration: 2,
+                    scrollTrigger:{
+                        trigger: ProRef.current,
+                        start: 'top 1%',
+                        end: 'end 100%',
+                        scrub: 0.5,
+                    }
+                })
 
-            gsap.fromTo(navRef.current,{
-                opacity: 0,
-                color: "rgb(0, 0, 0)"
-            },{
-                opacity: 1,
-                duration: 0.5,
-                color: "rgb(255, 255, 255)",
-                scrollTrigger:{
-                    trigger: ProRef.current,
-                    start: 'top 1%',
-                    end: 'end 100%',
-                    scrub: 0.5,
-                }
-            })
+                gsap.fromTo(navRef.current,{
+                    opacity: 0,
+                    color: "rgb(0, 0, 0)"
+                },{
+                    opacity: 1,
+                    duration: 0.5,
+                    color: "rgb(255, 255, 255)",
+                    scrollTrigger:{
+                        trigger: ProRef.current,
+                        start: 'top 1%',
+                        end: 'end 100%',
+                        scrub: 0.5
+                    }
+                })
+            },800)
+            
         })
-
         return ()=>{
             ctx.revert()
         }
     })
-
-
   return (
     <>  
         <div className={styles.ul} ref={navRef}>

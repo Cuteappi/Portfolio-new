@@ -1,6 +1,6 @@
 .mainBg{
     position: fixed;
-    height: 100%;
+    min-height: 100dvh;
     width: 100%;
     overflow: overlay;
     z-index: -100;

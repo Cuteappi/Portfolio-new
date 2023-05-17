@@ -11,8 +11,7 @@ export default function Starterpage({children}) {
     const main = useRef()
 
     const [eventstate, seteventstate] = useState(false)
-     
-    var Height = 0
+
     useEffect(()=>{
 
         var bg = scope.current.querySelector(`.${styles.back}`)
@@ -22,6 +21,46 @@ export default function Starterpage({children}) {
 
 
         
+        function throttle(cb, delay) {
+            let wait = false;
+            let storedArgs = null;
+          
+            function checkStoredArgs () {
+              if (storedArgs == null) {
+                wait = false;
+              } else {
+                cb(...storedArgs);
+                storedArgs = null;
+                setTimeout(checkStoredArgs, delay);
+              }
+            }
+          
+            return (...args) => {
+              if (wait) {
+                storedArgs = args;
+                return;
+              }
+          
+              cb(...args);
+              wait = true;
+              setTimeout(checkStoredArgs, delay);
+            }
+        }
+
+        const moves = throttle((e) => {
+            var mouseX = (e.clientX)/75;
+            var mouseY = (e.clientY)/50;
+
+            bg.style.backgroundPosition = `${mouseX}% ${mouseY}%`;            
+        },5)
+
+        const touchmoves = throttle((touch) => {
+            var mouseX = (touch.clientX)/25;
+            var mouseY = (touch.clientY)/25;
+
+            bg.style.backgroundPosition = `${mouseX}% ${mouseY}%`;            
+        },2)
+
         main.current.addEventListener("scroll", (e) => {
 
             var scrollPercent = (main.current.scrollTop) * 100 / (scope.current.clientHeight - window.innerHeight);
@@ -49,57 +88,18 @@ export default function Starterpage({children}) {
         })
 
         document.addEventListener("mousemove", (e) => {
-
-            var mouseX = (e.clientX)/75;
-            var mouseY = (e.clientY)/50;
-
-            if (scope.current !=null){
-
-                if(Height >= 100 && Height <= 100.1){
-                    seteventstate(true)
-                    setTimeout(() => {
-                        push('/home')
-                    },100)
-                }
-
-                
-                bg.style.backgroundPosition = `${mouseX}% ${mouseY}%`;
-
-            }            
+            moves(e)           
         })
 
         document.addEventListener("touchstart", (e) => {
-            e.preventDefault();
-        })
+            //e.preventDefault()
+            console.log('touch')
+        },{passive:false})
 
         document.addEventListener("touchmove", (e) => {
-            e.preventDefault();
             [...e.changedTouches].forEach(touch =>{
-
-                var mouseX = (touch.clientX)/20;
-                var mouseY = (touch.clientY)/20;
-
-                if (scope.current !=null){
-
-                    if(Height >= 50 && Height <= 50.5){
-                        animate(ani50)
-                    }
-
-                    if(Height >= 100 && Height <= 100.5){
-                        animate(ani100)
-                        seteventstate(true)
-                        setTimeout(() => {
-                            push('/home')
-                        },1000)
-                    }
-
-                    bg.style.backgroundPosition = `${mouseX}% ${mouseY}%`;
-                }
+                touchmoves(touch)
             })            
-        })
-
-        document.addEventListener("touchend", (e) => {
-            e.preventDefault();
         })
 
         if(eventstate){

@@ -17,10 +17,6 @@ export default function Starterpage({children}) {
         var bg = scope.current.querySelector(`.${styles.back}`)
         var loadingBar = scope.current.querySelector(`.${styles.loader}`)
 
-
-
-
-        
         function throttle(cb, delay) {
             let wait = false;
             let storedArgs = null;

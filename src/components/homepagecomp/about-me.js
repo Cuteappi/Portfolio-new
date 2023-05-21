@@ -35,7 +35,7 @@ export default function aboutMe() {
                 }
             })
         
-            //w0.to(waveref.current,{y:'-20vh'})
+            w0.to(waveref.current,{y:'-4.9%', stagger: -0.2})
     
         },500)
 

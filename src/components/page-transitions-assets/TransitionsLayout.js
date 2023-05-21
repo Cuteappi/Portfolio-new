@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { useContext, useEffect } from 'react'
 import { TransitionContext } from '@/contexts/TransitionContext'
 import { SwitchTransition, Transition } from 'react-transition-group'
-import gsap from 'gsap' 
+import gsap from 'gsap'
 
 export default function TransitionLayout ({ children }){
     const router = useRouter()
@@ -54,7 +54,7 @@ export default function TransitionLayout ({ children }){
             <SwitchTransition>
                 <Transition
                     key={router.pathname}
-                    timeout={1000}
+                    timeout={500}
                     in={true}
                     onEnter={states.Enter ? stateEnter : onPageEnter}
                     onExit={states.Enter ? stateExit : onPageExit }

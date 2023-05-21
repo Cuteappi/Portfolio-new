@@ -4,7 +4,6 @@ import styles from './Homepage.module.scss'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import { useRef, useEffect } from 'react'
-import { easeInOut } from 'framer-motion'
 
 // markers: {startColor: "white", endColor: "white", fontSize: "18px"}
 export default function Homepage() {
@@ -31,7 +30,7 @@ export default function Homepage() {
             setTimeout(()=>{
                 navRef.current.style.opacity = 1
   
-                gsap.fromTo(navRef.current.children,{ y:-100 },{ y:0 , ease: easeInOut, stagger: 0.1 })
+                gsap.fromTo(navRef.current.children,{ y:-100 },{ y:0 , stagger: 0.1 })
             
                 gsap.to(navRef.current,{ opacity: 1 })
 
@@ -47,7 +46,7 @@ export default function Homepage() {
                     }
                 })
 
-                gsap.fromTo(navRef.current.children,{ y:0 },{ y: -100 , ease: easeInOut, stagger: 0.1,
+                gsap.fromTo(navRef.current.children,{ y:0 },{ y: -100 , stagger: 0.1,
                     scrollTrigger:{
                         trigger: Maindiv.current,
                         start: 'top top',
@@ -56,7 +55,7 @@ export default function Homepage() {
                     }
                 })
 
-                gsap.fromTo(navRef.current.children,{ y:-100 },{y:0 , ease: easeInOut, stagger: 0.1, duration: 2,
+                gsap.fromTo(navRef.current.children,{ y:-100 },{y:0 , stagger: 0.1, duration: 2,
                     scrollTrigger:{
                         trigger: ProRef.current,
                         start: 'top top',
@@ -96,17 +95,17 @@ export default function Homepage() {
                     }
                 })
                 //project anim
-                gsap.to(ProRef.current,{
-                    scrollTrigger:{
-                        trigger: ProRef.current,
-                        start: 'top top',
-                        end: 'bottom top',
-                        scrub: 0.5,
-                        pin: true,
-                        pinSpacing: false ,
-                        //markers: {startColor: "white", endColor: "white", fontSize: "18px"}
-                    }
-                })
+                // gsap.to(ProRef.current,{
+                //     scrollTrigger:{
+                //         trigger: ProRef.current,
+                //         start: 'top top',
+                //         end: 'bottom top',
+                //         scrub: 0.5,
+                //         pin: true,
+                //         pinSpacing: false ,
+                //         //markers: {startColor: "white", endColor: "white", fontSize: "18px"}
+                //     }
+                // })
                 //project 1 anim
                 // gsap.to(proj1.current,{
                 //     y: 0,
@@ -120,7 +119,6 @@ export default function Homepage() {
                 //         //pinSpacing: false ,
                 //         markers: {startColor: "white", endColor: "white", fontSize: "18px"}
                 //     }
-
                 // })
 
             },751)

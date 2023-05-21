@@ -1,8 +1,17 @@
 import styles from './scss/skills.module.scss'
+import { useEffect, useContext, useRef } from 'react'
+import { HomeContext } from '@/contexts/HomeContext'
 
 export default function Skills() {
+    const { setSkill } = useContext(HomeContext)
+    const Skillref = useRef()
+
+    useEffect(() =>{
+        setSkill(Skillref)
+    },[])
+
   return (
-    <section className={`${styles.skills_section}`}>
+    <section className={`${styles.skills_section}`} ref={Skillref} >
         <h1>Skills</h1>
         <div className={`${styles.skills}`}>
             <div className={`${styles.java} ${styles.center}`}>

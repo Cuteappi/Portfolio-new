@@ -1,14 +1,9 @@
 import Head from 'next/head'
 import Homepage from '@/components/old/Homepage/Homepage'
-import { useEffect } from 'react'
-import { animations } from '@/lib/animations.jsx'
 
-export default function Home(props) {
-    useEffect(()=>{
-        props.handleSetSates(props.animation, 'rgb(255, 85, 85)')
-    })
 
-    
+
+export default function Home(props) {    
     return (
         <>
 
@@ -20,10 +15,4 @@ export default function Home(props) {
             <Homepage />
         </>
     )
-}
-
-export async function getServerSideProps(context) {
-    return {
-        props: { animation: animations[1] }
-    };
 }

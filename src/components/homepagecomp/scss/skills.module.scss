@@ -1,0 +1,28 @@
+.skills_section{
+    color:white;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    & h1{
+        margin: 5vh 0 15vh 0;
+        font-size: 10vh;
+        font-family: 'Allerta Stencil', sans-serif;
+    }
+
+    & .skills{
+        width: 100%;
+        display: grid;
+        gap: 50px;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+
+        & .center{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}

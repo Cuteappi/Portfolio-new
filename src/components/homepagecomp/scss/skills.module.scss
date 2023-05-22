@@ -26,3 +26,16 @@
         }
     }
 }
+
+@media screen and (max-width: 400px) {
+    .skills_section{
+        
+        & .skills{
+            width: 100%;
+            display: grid;
+            gap: 50px;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+        }
+    }
+}   

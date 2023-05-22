@@ -24,7 +24,7 @@ export default function Navbar() {
 						scrub: 1
 					}
 				})
-				t1.fromTo(Navref.current.children,{ y:0 },{ y:-100 , stagger: -0.1 })
+				t1.fromTo(Navref.current.children,{ y:0 },{ y:-100 , stagger: -0.1, opacity: 0})
 			},500)
 		}
 	},[About])
@@ -40,7 +40,7 @@ export default function Navbar() {
 						scrub: 1
 					}
 				})
-				t1.fromTo(Navref.current.children,{ y:-100 },{ y: 0, delay:0.5, color: 'white',stagger: 0.1 })
+				t1.fromTo(Navref.current.children,{ y:-100 },{ y: 0, delay:0.5, color: 'white',stagger: 0.1, opacity: 1})
 			},500)
 		}
 	},[Skill])

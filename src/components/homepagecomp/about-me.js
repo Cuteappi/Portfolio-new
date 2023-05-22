@@ -16,10 +16,11 @@ export default function aboutMe() {
             const t1 = gsap.timeline({
                 scrollTrigger:{
                     trigger: Aboutref.current,
-                    start: 'top top',
+                    start: '-5.6% top',
                     end: 'bottom top',
                     pin: true,
-                    scrub: 0.5
+                    scrub: 0.5,
+                    //markers: true
                 }
             })
             t1.to(textref.current,{ y: '62vh', opacity:0.7})
@@ -32,7 +33,8 @@ export default function aboutMe() {
                     scrub: 1
                 }
             })
-            wave.to(waveref.current[0],{y:'-15.9vh'},0)
+            wave.fromTo(waveref.current[0],{background: 'linear-gradient( rgb(56, 5, 5) 70%, rgb(0, 0, 0) 100%)'},
+                {y:'-15.9vh', background: 'linear-gradient( rgb(56, 5, 5) 30%, rgb(0, 0, 0) 100%)'},0)
             .to(waveref.current[1],{y:'-12vh'},0)
             .to(waveref.current[2],{y:'-13vh'},0)
             .to(waveref.current[3],{y:'-8vh'},0)

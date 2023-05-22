@@ -21,7 +21,8 @@ export default function Navbar() {
 						trigger: About.current,
 						start: 'top top',
 						end: 'top top',
-						scrub: 1
+						scrub: 1,
+						markers: true,
 					}
 				})
 				t1.fromTo(Navref.current.children,{ y:0 },{ y:-100 , stagger: -0.1, opacity: 0})

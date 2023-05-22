@@ -14,7 +14,7 @@ export default function Homepage() {
 
     
     return (
-        <div style={{minHeight: '100vh', minWidth: '100%', background: 'rgb(255,85,85)'}}>
+        <div style={{minHeight: '100vh', minWidth: '100%', background: 'rgb(255,85,85)', position: 'relative'}}>
             <Navbar />
             <AboutMe />
             <section style={{background:'black'}} ref={mainsec}>

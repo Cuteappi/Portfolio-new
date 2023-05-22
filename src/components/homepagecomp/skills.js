@@ -23,8 +23,8 @@ export default function Skills() {
                     start: 'top top',
                     end: 'bottom top',
                     pin: true,
-                    //pinSpacing: false,
                     scrub: 0.5,
+                    markers: true
                 }
             })
             t1.from(heading,{ y: 100, opacity: 0})

@@ -3,9 +3,6 @@ import Link from 'next/link'
 import styles from './scss/Navbar.module.scss'
 import { HomeContext } from '@/contexts/HomeContext'
 import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
 
 export default function Navbar() {
 	const { About } = useContext(HomeContext)

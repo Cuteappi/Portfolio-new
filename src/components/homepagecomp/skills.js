@@ -1,6 +1,11 @@
 import styles from './scss/skills.module.scss'
 import { useEffect, useContext, useRef } from 'react'
 import { HomeContext } from '@/contexts/HomeContext'
+import gsap  from 'gsap'
+import { Power2 } from "gsap";
+//import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+
+//gsap.registerPlugin(ScrollTrigger)
 
 export default function Skills() {
     const { setSkill } = useContext(HomeContext)
@@ -8,11 +13,40 @@ export default function Skills() {
 
     useEffect(() =>{
         setSkill(Skillref)
+        const heading =  Skillref.current.querySelector(`.${styles.skills_heading}`)
+        const center = Skillref.current.querySelectorAll(`.${styles.Center}`)
+
+        setTimeout(() =>{
+            const t1 = gsap.timeline({
+                scrollTrigger:{
+                    trigger: Skillref.current,
+                    start: 'top top',
+                    end: 'bottom top',
+                    pin: true,
+                    //pinSpacing: false,
+                    scrub: 0.5,
+                }
+            })
+            t1.from(heading,{ y: 100, opacity: 0})
+            .from(center,{
+                scale: 0.5,
+                opacity: 0,
+                y: 100,
+                stagger: {
+                    each: 0.1,
+                    from: "center",
+                    grid: "auto",
+                    ease: Power2.inOut,
+                }
+            })
+
+        },500)
+
     },[])
 
   return (
     <section className={`${styles.skills_section}`} ref={Skillref} >
-        <h1>Skills</h1>
+        <h1 className={`${styles.skills_heading}`} >Skills</h1>
         <div className={`${styles.skills}`}>
             <div className={`${styles.java} ${styles.center}`}>
                 <svg fill="white" height="100px" width="100px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" 

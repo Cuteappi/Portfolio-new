@@ -11,24 +11,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 export default function Homepage() {
     const mainsec= useRef()
-    const { About } = useContext(HomeContext)
 
-    // useEffect(() => {
-    //     if(About){
-    //         setTimeout(() =>{
-    //             const t1 = gsap.timeline({
-    //                 scrollTrigger:{
-    //                     trigger: About.current,
-    //                     start: 'top top',
-    //                     end: 'bottom top',
-    //                     pin: true,
-    //                     pinSpacing: false,
-    //                     scrub: 1
-    //                 }
-    //             })
-    //         },500)
-    //     }
-    // },[About])
     
     return (
         <div style={{minHeight: '100vh', minWidth: '100%', background: 'rgb(255,85,85)'}}>

@@ -113,17 +113,22 @@
 
 @media screen and (max-width: 400px) {
     .about_section{
+
+        & .name{
+            margin-top: 60px;
+        }
         
         & h1{
-            margin-left: 60px;
+            margin-left: 50px;
             font-size: 50px;
             font-family: 'Allerta Stencil', sans-serif;
         }
 
         & .span{
             display:block;
-            margin: 5px 0 0 60px;
-            font-size: 26px;
+            width: 80%;
+            margin: 5px 0 0 50px;
+            font-size: 15px;
             font-family: 'Allerta Stencil', sans-serif;
             letter-spacing: 5px;
         }

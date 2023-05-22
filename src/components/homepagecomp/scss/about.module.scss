@@ -1,0 +1,131 @@
+.about_section{
+    //overflow: hidden;
+    position: relative;
+    min-height: 100vh;
+    padding: 6vh 0 0 0;
+    isolation: isolate;
+
+    & .waves{
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    & .wave0{
+        top: 17vh;
+        background-color: black;
+        clip-path: polygon(0% 100%, 0% 65.22%, 3% 63.22%, 8% 64.22%, 14% 65.22%, 19% 63.22%, 30% 67.22%, 39% 66.22%, 43% 68.22%, 49% 66.22%, 54% 67.22%, 59% 65.22%, 65% 67.22%, 71% 66.22%, 76% 66.22%, 80% 65.22%, 85% 64.22%, 89% 64.22%, 92% 61.22%, 96% 61.22%, 100% 65.22%, 100% 100%);
+        z-index: 4;
+    }
+
+    & .wave1{
+        top: -1vh;
+        background-color: rgb(99, 16, 16);
+        clip-path: polygon(0% 100%, 0% 73.83%, 8% 68.83%, 15% 68.83%, 21% 71.83%, 27% 75.83%, 31% 78.83%, 36% 78.83%, 42.71% 80.39%, 49% 84.83%, 54% 84.83%, 61% 82.83%, 70% 80.83%, 76% 80.83%, 82% 78.83%, 86% 77.83%, 89% 75.83%, 92% 73.83%, 95% 70.83%, 99% 72.83%, 100% 74.81%, 100% 100%);
+        z-index: 3;
+    }
+
+    & .wave2{
+        top: -4vh;
+        background-color: rgb(171, 38, 38);
+        clip-path: polygon(0% 100%, 0% 84.94%, 3% 83.94%, 10% 79.94%, 15% 77.94%, 21% 80.94%, 29% 78.94%, 35% 83.94%, 42% 83.94%, 47% 78.94%, 54% 81.94%, 61% 78.94%, 67% 75.94%, 71% 80.94%, 75% 78.94%, 80% 80.94%, 86% 77.94%, 90% 74.94%, 94% 74.94%, 97% 79.94%, 100% 84.94%, 100% 100%);
+        z-index: 2;
+    }
+
+    & .wave3{
+        top: -3vh;
+        background-color: rgb(220, 52, 52);
+        z-index: 1;
+        clip-path: polygon(0% 100%, 0% 86.61%, 3% 76.61%, 11% 69.61%, 18% 70.61%, 26% 69.61%, 33% 76.7%, 38% 75.7%, 44% 70.7%, 49% 75.7%, 57% 76.7%, 61% 69.7%, 66% 68.7%, 71% 66.7%, 77% 68.7%, 81% 66.7%, 86% 64.7%, 89% 69%, 94% 63.7%, 98% 64.7%, 100% 70.7%, 100% 100%);
+    }
+    & .wave4{
+        top: -5vh;
+        background-color: rgb(243, 74, 74);
+        clip-path: polygon(0% 100%, 0% 66.69%, 7% 58.69%, 12% 61.69%, 19% 66.69%, 26% 66.69%, 32% 68.69%, 38% 64.69%, 44% 63.69%, 49% 62.69%, 55% 62.69%, 59% 64.69%, 64% 66.69%, 68% 66.69%, 72% 66.69%, 75% 65.69%, 79% 62.69%, 84% 62.69%, 89% 59.69%, 95% 55.69%, 100% 61.69%, 100% 100%);
+        z-index: 0;
+    }
+        
+    & h1{
+        margin-left: 150px;
+        font-size: 120px;
+        font-family: 'Allerta Stencil', sans-serif;
+    }
+
+    & .name{
+        position: absolute;
+        z-index: 2;
+    }
+
+    & .about_me{
+        margin-top: 50px;
+    }
+
+    & .span{
+        display:block;
+        margin: 5px 0 0 150px;
+        font-size: 36px;
+        font-family: 'Allerta Stencil', sans-serif;
+        letter-spacing: 5px;
+    }
+
+    & .my_redirects{
+        display: flex;
+        justify-content: center;
+        margin: 200px 0 0 0;
+        gap: 200px;
+        font-size: 100px;
+
+        & .hoverstate{
+            background-color: black;
+            border-radius: 80px;
+            transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+            & a{
+                color: rgb(255, 85, 85);
+            }
+
+            &:hover{
+                cursor:pointer;
+                color: rgb(0, 0, 0);
+                background-color: transparent;
+                transform:scale(1.5);
+
+                & a{
+                    color: rgb(0, 0, 0);
+                }
+            }
+        }
+
+        & .instagram{
+            padding: 10px 15px 0 15px;
+        }
+
+        & .github{
+            padding: 10px 15px 0 15px;
+        }
+
+        & .linkedin{
+            padding: 10px 15px 0 15px;
+        } 
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .about_section{
+        
+        & h1{
+            margin-left: 60px;
+            font-size: 50px;
+            font-family: 'Allerta Stencil', sans-serif;
+        }
+
+        & .span{
+            display:block;
+            margin: 5px 0 0 60px;
+            font-size: 26px;
+            font-family: 'Allerta Stencil', sans-serif;
+            letter-spacing: 5px;
+        }
+    }
+}

@@ -1,0 +1,16 @@
+.dot{
+    height: 30px;
+    width: 30px;
+    margin: 0 10px 0 10px;
+    background-color: rgb(161, 226, 121);
+    border-radius: 100px;
+}
+.dot_container{
+    align-self: center;
+    height: 100px;
+    width: 150px;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}

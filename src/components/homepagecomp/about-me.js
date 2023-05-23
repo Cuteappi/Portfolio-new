@@ -2,50 +2,56 @@ import React from 'react'
 import styles from './scss/about.module.scss'
 import { useEffect, useContext, useRef } from 'react'
 import { HomeContext } from '@/contexts/HomeContext'
-import gsap  from 'gsap'
+import { gsap }  from 'gsap'
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 
 export default function aboutMe() {
-    const { setAbout } = useContext(HomeContext)
-    const Aboutref = useRef()
-    const textref =useRef()
-    const waveref =useRef(new Array())
+    const { MainSec } = useContext(HomeContext)
+
 
     useEffect(() =>{
-        setAbout(Aboutref)
-        setTimeout(() =>{
-            const t1 = gsap.timeline({
-                scrollTrigger:{
-                    trigger: Aboutref.current,
-                    start: '-5.6% top',
-                    end: 'bottom top',
-                    pin: true,
-                    scrub: 0.5,
-                    //markers: true
-                }
-            })
-            t1.to(textref.current,{ y: '62vh', opacity:0.7})
+        if(MainSec){
 
-            const wave = gsap.timeline({
-                scrollTrigger:{
-                    trigger: Aboutref.current,
-                    start: 'top top',
-                    end: 'bottom top',
-                    scrub: 1
-                }
-            })
-            wave.fromTo(waveref.current[0],{background: 'linear-gradient( rgb(56, 5, 5) 70%, rgb(0, 0, 0) 100%)'},
-                {y:'-15.9vh', background: 'linear-gradient( rgb(56, 5, 5) 30%, rgb(0, 0, 0) 100%)'},0)
-            .to(waveref.current[1],{y:'-12vh'},0)
-            .to(waveref.current[2],{y:'-13vh'},0)
-            .to(waveref.current[3],{y:'-8vh'},0)
-            .to(waveref.current[4],{y:'-4vh'},0)
+            const About = MainSec.current.querySelector(`.AboutSection`)
+            const Text = MainSec.current.querySelector(`.${styles.name}`)
+            const Waves = MainSec.current.querySelectorAll(`.${styles.waves}`)
+            
 
-        },500)
-    },[])
+            setTimeout(() =>{ ScrollTrigger.refresh() },500)
+
+            const ctx = gsap.context(()=>{
+                const t1 = gsap.timeline({
+                    scrollTrigger:{
+                        trigger: About,
+                        start: '-6.5% top',
+                        end: '+=1500px',
+                        pin: true,
+                        scrub: 1.5,
+                        //markers: true
+                    }
+                })
+                t1.to(Text,{ y: '65vh', opacity:0.7},0)
+                .fromTo(Waves[0],{background: 'linear-gradient( rgb(56, 5, 5) 70%, rgb(0, 0, 0) 100%)'},
+                    {y:'-13.9vh', background: 'linear-gradient( rgb(56, 5, 5) 40%, rgb(0, 0, 0) 100%)'},0)
+                .to(Waves[1],{y:'-11vh'},0)
+                .to(Waves[2],{y:'-11vh'},0)
+                .to(Waves[3],{y:'-3vh'},0)
+                .to(Waves[4],{y:'5vh'},0)
+            })
+
+            return ()=> {
+                ctx.revert();
+
+            }
+        }
+    },[MainSec])
 
     return (
-        <section className={styles.about_section} ref={Aboutref}>
-            <div className={styles.name} ref={textref}>
+        <div>
+        <section className={`${styles.about_section} AboutSection`}>
+            <div className={styles.name}>
                 <h1>Hello,</h1>
                 <h1>my name is Solomon</h1>
                 <div className={styles.about_me}>
@@ -53,11 +59,14 @@ export default function aboutMe() {
                     <span className={styles.span}>creating beautiful web designs</span>
                 </div>
             </div>
-            <div className={`${styles.waves} ${styles.wave0}`} ref={(element) => waveref.current.push(element)}></div>
-            <div className={`${styles.waves} ${styles.wave1}`} ref={(element) => waveref.current.push(element)}></div>
-            <div className={`${styles.waves} ${styles.wave2}`} ref={(element) => waveref.current.push(element)}></div>
-            <div className={`${styles.waves} ${styles.wave3}`} ref={(element) => waveref.current.push(element)}></div>
-            <div className={`${styles.waves} ${styles.wave4}`} ref={(element) => waveref.current.push(element)}></div>
+
+            <div className={`${styles.waves} ${styles.wave0}`}></div>
+            <div className={`${styles.waves} ${styles.wave1}`}></div>
+            <div className={`${styles.waves} ${styles.wave2}`}></div>
+            <div className={`${styles.waves} ${styles.wave3}`}></div>
+            <div className={`${styles.waves} ${styles.wave4}`}></div>
+            
         </section>
+        </div>
     )
 }

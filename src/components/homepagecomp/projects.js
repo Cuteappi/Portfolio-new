@@ -1,8 +1,11 @@
 import styles from './scss/projects.module.scss'
 import { useEffect, useContext, useRef } from 'react'
 import { HomeContext } from '@/contexts/HomeContext'
-import gsap  from 'gsap'
+import { gsap }  from 'gsap'
 import { Power2 } from "gsap";
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 
 export default function Projects() {
     const { setProject } = useContext(HomeContext)
@@ -10,33 +13,41 @@ export default function Projects() {
 
     useEffect(() =>{
         setProject(Projectref)
-        const heading = Projectref.current.querySelectorAll(`.${styles.projects__title}`)
+        //const heading = Projectref.current.querySelectorAll(`.${styles.projects__title}`)
 
-        setTimeout(() =>{
-            const t1 = gsap.timeline({
-                scrollTrigger:{
-                    trigger: Projectref.current,
-                    start: 'top top',
-                    end: 'bottom top',
-                    pin: true,
-                    //pinSpacing: false,
-                    scrub: 0.5,
-                }
-            })
-            t1.from(heading,{ y: 100, opacity: 0})
-            // .from(center,{
-            //     scale: 0.5,
-            //     opacity: 0,
-            //     y: 100,
-            //     stagger: {
-            //         each: 0.1,
-            //         from: "center",
-            //         grid: "auto",
-            //         ease: Power2.inOut,
-            //     }
-            // })
+        const ctx = gsap.context(()=>{
+            setTimeout(() =>{
+                ScrollTrigger.refresh()
+            },1000)
 
-        },500)
+                // const t1 = gsap.timeline({
+                //     scrollTrigger:{
+                //         trigger: Projectref.current,
+                //         start: 'top top',
+                //         end: 'bottom top',
+                //         pin: true,
+                //         //pinSpacing: false,
+                //         scrub: 0.5,
+                //     }
+                // })
+                // t1.from(heading,{ y: 100, opacity: 0})
+                // .from(center,{
+                //     scale: 0.5,
+                //     opacity: 0,
+                //     y: 100,
+                //     stagger: {
+                //         each: 0.1,
+                //         from: "center",
+                //         grid: "auto",
+                //         ease: Power2.inOut,
+                //     }
+                // })
+
+        })
+        return ()=> {
+            ScrollTrigger.killAll()
+            ctx.revert()
+        }
 
     },[])
 

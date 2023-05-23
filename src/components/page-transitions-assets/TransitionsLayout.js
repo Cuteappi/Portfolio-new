@@ -19,36 +19,46 @@ export default function TransitionLayout ({ children }){
     const stateEnter = (element) => {gsap.fromTo(element, states.Enter[0], states.Enter[1])}
     const stateExit = (element) => {gsap.fromTo(element, states.Exit[0], states.Exit[1])}
 
-    const onPageEnter = (element) => {
-        gsap.fromTo(element,
-            {
-                y: 50,
-                autoAlpha: 0,
-                ease: 'power3.out',
-            },
-            {
-                y: 0,
-                autoAlpha: 1,
-                duration: 0.5,
-                ease: 'power3.out',
-            }
-        )
+    var onPageEnter = (element) => {
+         const ctx = gsap.context(()=>{
+            gsap.fromTo(element,
+                {
+                    y: 50,
+                    autoAlpha: 0,
+                    ease: 'power3.out',
+                },
+                {
+                    y: 0,
+                    autoAlpha: 1,
+                    duration: 0.5,
+                    ease: 'power3.out',
+                }
+            )
+        })
+        return ()=> ctx.revert()        
     }
-    const onPageExit = (element) => {
-        gsap.fromTo(element,
-            {
-                y: 0,
-                autoAlpha: 1,
-                ease: 'power3.out',
-            },
-            {
-                y: -50,
-                autoAlpha: 0,
-                duration: 0.5,
-                ease: 'power3.inOut',
-            }
-        )
+
+    var onPageExit = (element) => {
+        gsap.context(()=>{
+            gsap.fromTo(element,
+                {
+                    y: 0,
+                    autoAlpha: 1,
+                    ease: 'power3.out',
+                },
+                {
+                    y: -50,
+                    autoAlpha: 0,
+                    duration: 0.5,
+                    ease: 'power3.inOut',
+                }
+            )
+        })
+        return ()=> ctx.revert()
     }
+    
+    //states.Enter ? stateExit : onPageExit
+    //states.Enter ? stateEnter : onPageEnter
     return (
         <>
             <SwitchTransition>
@@ -56,8 +66,8 @@ export default function TransitionLayout ({ children }){
                     key={router.pathname}
                     timeout={500}
                     in={true}
-                    onEnter={states.Enter ? stateEnter : onPageEnter}
-                    onExit={states.Enter ? stateExit : onPageExit }
+                    onEnter={()=>{}}
+                    onExit={()=>{}}
                     mountOnEnter={true}
                     unmountOnExit={true}
                 >

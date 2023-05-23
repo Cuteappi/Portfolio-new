@@ -5,22 +5,30 @@ import Projects from '@/components/homepagecomp/projects'
 import { HomeContext } from '@/contexts/HomeContext'
 import { useEffect, useRef, useContext } from 'react'
 import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
 
 export default function Homepage() {
     const mainsec= useRef()
+    const { setMainSec } = useContext(HomeContext)
+    useEffect(() =>{
+        setMainSec(mainsec)
+        
+        // router.beforePopState((state) => {
+        //     state.options.scroll = false;
+        //     return true;
+        // });
+    },[])
 
     
     return (
-        <div style={{minHeight: '100vh', minWidth: '100%', background: 'rgb(255,85,85)', position: 'relative'}}>
+        <div>
+        <div style={{minHeight: '100vh', minWidth: '100%', background: 'rgb(255,85,85)', position: 'relative'}} ref={mainsec}>
             <Navbar />
             <AboutMe />
-            <section style={{background:'black'}} ref={mainsec}>
+            <section style={{background:'black'}}>
                 <Skills />
                 <Projects />
             </section>
+        </div>
         </div>
     )
 }

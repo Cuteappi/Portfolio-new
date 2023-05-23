@@ -2,49 +2,71 @@ import {useEffect, useRef, useContext} from 'react'
 import Link from 'next/link'
 import styles from './scss/Navbar.module.scss'
 import { HomeContext } from '@/contexts/HomeContext'
-import { gsap } from 'gsap'
+import { gsap }  from 'gsap'
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 
 export default function Navbar() {
-	const { About } = useContext(HomeContext)
-	const { Skill } = useContext(HomeContext)
-	const Navref =  useRef()
+	const Navref = useRef()
+	const { MainSec } = useContext(HomeContext)
 
 	useEffect(() =>{
-		gsap.fromTo(Navref.current.children,{ y:-100 },{ y: 0, delay:0.5, stagger: 0.1 })
+		const Links = Navref.current.querySelectorAll(`.${styles.links}`)
+		const ctx = gsap.context(()=>{
+			gsap.fromTo(Links,{ y: -100 },{ y: 0, stagger: 0.1})
+		})
+		return ()=> {
+			ScrollTrigger.killAll()
+			ctx.revert()
+		}
 	},[])
 
+
 	useEffect(() =>{
-		if(About){
-			setTimeout(() =>{
+		if(MainSec){
+			
+			const Links = MainSec.current.querySelectorAll(`.${styles.links}`)
+			const About = MainSec.current.querySelector(`.AboutSection`)
+			const Skill = MainSec.current.querySelector(`.SkillSection`)
+
+			setTimeout(() =>{ ScrollTrigger.refresh() },500)
+
+			const ctx = gsap.context(()=>{
+
+				//on about
 				const t1 = gsap.timeline({
 					scrollTrigger:{
-						trigger: About.current,
+						trigger: About,
 						start: 'top top',
-						end: 'top top',
+						//pin: true,
+						end: 'top',
+						scrub: 1,
+						//markers: true,
+					}
+				})
+				t1.fromTo(Links,{ y:0 },{ y:-100 , stagger: -0.1, opacity: 0})
+
+				//on skills
+				const t2 = gsap.timeline({
+					scrollTrigger:{
+						trigger: Skill,
+						start: '180% top',
+						end: '250% top',
 						scrub: 1,
 						markers: true,
 					}
 				})
-				t1.fromTo(Navref.current.children,{ y:0 },{ y:-100 , stagger: -0.1, opacity: 0})
-			},500)
+				t2.fromTo(Links,{ y:-100 },{ y: 0, delay:0.5, color: 'white',stagger: 0.1, opacity: 1})
+				//.to(Links,{ y: -100, stagger: -0.1})
+			})
+			return ()=> {
+				ScrollTrigger.killAll()
+				ctx.revert()
+			}
 		}
-	},[About])
+	},[MainSec])
 
-	useEffect(() =>{
-		if(Skill){
-			setTimeout(() =>{
-				const t1 = gsap.timeline({
-					scrollTrigger:{
-						trigger: Skill.current,
-						start: 'top top',
-						end: 'top top',
-						scrub: 1
-					}
-				})
-				t1.fromTo(Navref.current.children,{ y:-100 },{ y: 0, delay:0.5, color: 'white',stagger: 0.1, opacity: 1})
-			},500)
-		}
-	},[Skill])
 	return (
 		<div className={styles.ul} ref={Navref}>
 

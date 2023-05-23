@@ -55,6 +55,7 @@ export default function Navbar() {
 						end: '250% top',
 						scrub: 1,
 						//markers: true,
+						//something more
 					}
 				})
 				t2.fromTo(Links,{ y:-100 },{ y: 0, delay:0.5, color: 'white',stagger: 0.1, opacity: 1})

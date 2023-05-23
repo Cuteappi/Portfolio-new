@@ -10,7 +10,7 @@ const HomeProvider = ({ children }) => {
     const [MainSec, setMainSec] = useState()
   
     return (
-        <HomeContext.Provider value={{About, Skill, Project, Contact, MainSec, setAbout, setSkill, setProject, setContact, setMainSec   }}>
+        <HomeContext.Provider value={{About, Skill, Project, Contact, MainSec, setAbout, setSkill, setProject, setContact, setMainSec }}>
             {children}
         </HomeContext.Provider>
     )

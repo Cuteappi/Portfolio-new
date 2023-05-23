@@ -1,38 +1,43 @@
-import {useEffect, useRef, useContext} from 'react'
+import {useEffect, useContext} from 'react'
 import Link from 'next/link'
 import styles from './scss/Navbar.module.scss'
 import { HomeContext } from '@/contexts/HomeContext'
+import { TransitionContext } from '@/contexts/TransitionContext'
 import { gsap }  from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
 export default function Navbar() {
-	const Navref = useRef()
+
+	const { completed } = useContext(TransitionContext)
 	const { MainSec } = useContext(HomeContext)
 
-	useEffect(() =>{
-		const Links = Navref.current.querySelectorAll(`.${styles.links}`)
-		const ctx = gsap.context(()=>{
-			gsap.fromTo(Links,{ y: -100 },{ y: 0, stagger: 0.1})
-		})
-		return ()=> {
-			ScrollTrigger.killAll()
-			ctx.revert()
-		}
-	},[])
+	// useEffect(() =>{
+	// 	const Links = Navref.current.querySelectorAll(`.${styles.links}`)
+	// 	const ctx = gsap.context(()=>{
+	// 		gsap.to(Links,{ y: 0, stagger: 0.1})
+	// 	})
+	// 	return ()=> {
+	// 		ScrollTrigger.killAll()
+	// 		ctx.revert()
+	// 	}
+	// },[])
 
 
 	useEffect(() =>{
+		if (!completed) return
 		if(MainSec){
 			
-			const Links = MainSec.current.querySelectorAll(`.${styles.links}`)
+			const Nav = MainSec.current.querySelector(`.Nav`)
+			const Links = MainSec.current.querySelectorAll(`.Link`)
 			const About = MainSec.current.querySelector(`.AboutSection`)
 			const Skill = MainSec.current.querySelector(`.SkillSection`)
 
-			setTimeout(() =>{ ScrollTrigger.refresh() },500)
-
 			const ctx = gsap.context(()=>{
+
+				gsap.set(Nav,{ opacity: 1 })
+				gsap.to(Links,{ y: 0, stagger: 0.1})
 
 				//on about
 				const t1 = gsap.timeline({
@@ -55,7 +60,6 @@ export default function Navbar() {
 						end: '250% top',
 						scrub: 1,
 						//markers: true,
-						//something more
 					}
 				})
 				t2.fromTo(Links,{ y:-100 },{ y: 0, delay:0.5, color: 'white',stagger: 0.1, opacity: 1})
@@ -66,18 +70,18 @@ export default function Navbar() {
 				ctx.revert()
 			}
 		}
-	},[MainSec])
+	},[completed])
 
 	return (
-		<div className={styles.ul} ref={Navref}>
+		<div className={`${styles.ul} Nav`}>
 
-			<Link href='/' className={`${styles.links} ${styles.links0}`}>SOLO</Link>
+			<Link href='/' className={`${styles.links} ${styles.links0} Link`}>SOLO</Link>
 
-			<div className={`${styles.links} ${styles.links1}`} >HOME</div>
+			<div className={`${styles.links} ${styles.links1} Link`} >HOME</div>
 
-			<div className={`${styles.links} ${styles.links2}`} >PROJECTS</div>
+			<div className={`${styles.links} ${styles.links2} Link`} >PROJECTS</div>
 
-			<div className={`${styles.links} ${styles.links3}`} >CONTACT</div>
+			<div className={`${styles.links} ${styles.links3} Link`} >CONTACT</div>
 
 		</div>
 	)

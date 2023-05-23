@@ -1,23 +1,26 @@
 import styles from './scss/skills.module.scss'
 import { useEffect, useContext, useRef } from 'react'
+import { TransitionContext } from '@/contexts/TransitionContext'
 import { HomeContext } from '@/contexts/HomeContext'
 import { gsap }  from 'gsap'
+//import { DrawSVGPlugin } from 'gsap/dist/DrawSVGPlugin.js'
 import { Power2 } from "gsap";
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
 export default function Skills() {
+    
+    const { completed } = useContext(TransitionContext)
     const { MainSec } = useContext(HomeContext)
     const Skillref = useRef()
 
     useEffect(() =>{
+        if (!completed) return
         if(MainSec){
             const wrapper = MainSec.current.querySelector(`.SkillSection`)
             const heading = MainSec.current.querySelector(`.heading`)
             const Center = MainSec.current.querySelectorAll(`.center`)
-
-            setTimeout(() =>{ScrollTrigger.refresh()},1000)
 
             const ctx = gsap.context(()=>{
                     const t1 = gsap.timeline({
@@ -50,7 +53,7 @@ export default function Skills() {
                 ctx.revert()
             }
         }
-    },[MainSec])
+    },[completed])
 
   return (
     <section className={`${styles.skills_section} SkillSection`}>

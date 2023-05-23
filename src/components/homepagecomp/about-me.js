@@ -1,25 +1,26 @@
 import React from 'react'
 import styles from './scss/about.module.scss'
-import { useEffect, useContext, useRef } from 'react'
+import { useEffect, useContext } from 'react'
 import { HomeContext } from '@/contexts/HomeContext'
+import { TransitionContext } from '@/contexts/TransitionContext'
 import { gsap }  from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
 export default function aboutMe() {
+    const { completed } = useContext(TransitionContext)
     const { MainSec } = useContext(HomeContext)
 
 
     useEffect(() =>{
+        if (!completed) return
         if(MainSec){
+            console.log(MainSec.current)
 
             const About = MainSec.current.querySelector(`.AboutSection`)
             const Text = MainSec.current.querySelector(`.${styles.name}`)
             const Waves = MainSec.current.querySelectorAll(`.${styles.waves}`)
-            
-
-            setTimeout(() =>{ ScrollTrigger.refresh() },500)
 
             const ctx = gsap.context(()=>{
                 const t1 = gsap.timeline({
@@ -46,7 +47,7 @@ export default function aboutMe() {
 
             }
         }
-    },[MainSec])
+    },[completed])
 
     return (
         <div>

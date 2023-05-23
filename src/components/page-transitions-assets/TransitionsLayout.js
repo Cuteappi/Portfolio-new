@@ -14,47 +14,52 @@ export default function TransitionLayout ({ children }){
         });
     })
 
-    const states = useContext(TransitionContext)
+    const {setCompleted} = useContext(TransitionContext)
 
-    const stateEnter = (element) => {gsap.fromTo(element, states.Enter[0], states.Enter[1])}
-    const stateExit = (element) => {gsap.fromTo(element, states.Exit[0], states.Exit[1])}
+    //const stateEnter = (element) => {gsap.fromTo(element, states.Enter[0], states.Enter[1])}
+    //const stateExit = (element) => {gsap.fromTo(element, states.Exit[0], states.Exit[1])}
 
     var onPageEnter = (element) => {
-         const ctx = gsap.context(()=>{
-            gsap.fromTo(element,
-                {
-                    y: 50,
-                    autoAlpha: 0,
-                    ease: 'power3.out',
-                },
-                {
-                    y: 0,
-                    autoAlpha: 1,
-                    duration: 0.5,
-                    ease: 'power3.out',
-                }
-            )
+        setCompleted(false)
+
+        gsap.set(element,{
+            y: 50,
+            autoAlpha: 0,
+            ease: 'power3.out'
         })
-        return ()=> ctx.revert()        
+
+        const t1 = gsap.timeline({
+            paused: true,
+            onComplete:()=>{
+                gsap.set(element, { clearProps: 'all' });
+                setCompleted(true);
+            }
+        })
+        t1.to(element,{
+            y: 0,
+            autoAlpha: 1,
+            duration: 0.5,
+            ease: 'power3.out',
+        }).play()     
     }
 
     var onPageExit = (element) => {
-        gsap.context(()=>{
-            gsap.fromTo(element,
-                {
-                    y: 0,
-                    autoAlpha: 1,
-                    ease: 'power3.out',
-                },
-                {
-                    y: -50,
-                    autoAlpha: 0,
-                    duration: 0.5,
-                    ease: 'power3.inOut',
-                }
-            )
+        gsap.set(element,{
+            y: 0,
+            autoAlpha: 1,
+            ease: 'power3.out',
         })
-        return ()=> ctx.revert()
+
+        const tl = gsap.timeline({
+            paused: true
+        })
+
+        tl.to(element,{
+            y: -50,
+            autoAlpha: 0,
+            duration: 0.5,
+            ease: 'power3.inOut',
+        }).play() 
     }
     
     //states.Enter ? stateExit : onPageExit
@@ -66,8 +71,8 @@ export default function TransitionLayout ({ children }){
                     key={router.pathname}
                     timeout={500}
                     in={true}
-                    onEnter={()=>{}}
-                    onExit={()=>{}}
+                    onEnter={onPageEnter}
+                    onExit={onPageExit}
                     mountOnEnter={true}
                     unmountOnExit={true}
                 >

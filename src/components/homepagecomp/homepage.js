@@ -6,10 +6,8 @@ import Projects from '@/components/homepagecomp/projects'
 import { HomeContext } from '@/contexts/HomeContext'
 import { TransitionContext } from '@/contexts/TransitionContext'
 import { useEffect, useRef, useContext } from 'react'
-import { useRouter } from 'next/router'
 
 export default function Homepage() {
-    const router = useRouter()
     const mainsec= useRef()
     const { setMainSec } = useContext(HomeContext)
     const { completed, setCompleted } = useContext(TransitionContext)
@@ -18,7 +16,7 @@ export default function Homepage() {
     useEffect(() =>{
         setMainSec(mainsec)
         if(completed.state) return
-        setCompleted({state: true, Mainsec: mainsec})
+        setCompleted({state: true})
         console.log(completed)
     },[completed])
 

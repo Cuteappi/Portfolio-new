@@ -20,7 +20,7 @@ export default function TransitionLayout ({ children }){
     //const stateExit = (element) => {gsap.fromTo(element, states.Exit[0], states.Exit[1])}
 
     var onPageEnter = (element) => {
-        setCompleted(false)
+        setCompleted({state: false})
 
         gsap.set(element,{
             y: 50,
@@ -32,7 +32,7 @@ export default function TransitionLayout ({ children }){
             paused: true,
             onComplete:()=>{
                 gsap.set(element, { clearProps: 'all' });
-                setCompleted(true);
+                setCompleted({state: true});
             }
         })
         t1.to(element,{
@@ -44,7 +44,7 @@ export default function TransitionLayout ({ children }){
     }
 
     var onPageExit = (element) => {
-        setCompleted(false)
+        setCompleted({state: false})
         gsap.set(element,{
             y: 0,
             autoAlpha: 1,

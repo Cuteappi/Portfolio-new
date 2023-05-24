@@ -14,7 +14,7 @@ export default function aboutMe() {
 
 
     useEffect(() =>{
-        if (!completed) return
+        if (!completed.state) return
         if(MainSec){
             console.log(MainSec.current)
 

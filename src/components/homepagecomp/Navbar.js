@@ -37,7 +37,7 @@ export default function Navbar() {
 			const ctx = gsap.context(()=>{
 
 				gsap.set(Nav,{ opacity: 1 })
-				gsap.to(Links,{ y: 0, stagger: 0.1})
+				gsap.to(Links,{ y: 0, stagger: 0.1, delay: 0.5})
 
 				//on about
 				const t1 = gsap.timeline({

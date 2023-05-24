@@ -1,5 +1,5 @@
 import styles from './scss/skills.module.scss'
-import { useEffect, useContext, useRef } from 'react'
+import { useEffect, useContext } from 'react'
 import { TransitionContext } from '@/contexts/TransitionContext'
 import { HomeContext } from '@/contexts/HomeContext'
 import { gsap }  from 'gsap'
@@ -10,16 +10,15 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 export default function Skills() {
-    
+
     const { completed } = useContext(TransitionContext)
     const { MainSec } = useContext(HomeContext)
-    const Skillref = useRef()
 
     useEffect(() =>{
         if (!completed) return
         if(MainSec){
             const wrapper = MainSec.current.querySelector(`.SkillSection`)
-            const heading = MainSec.current.querySelector(`.heading`)
+            const heading = MainSec.current.querySelectorAll(`.Skillheading`)
             const Center = MainSec.current.querySelectorAll(`.center`)
 
             const ctx = gsap.context(()=>{
@@ -29,17 +28,28 @@ export default function Skills() {
                             start: 'top top',
                             end: '+=2000px',
                             pin: true,
+                            anticipatePin: 1,
                             scrub: 1.5,
                             //markers: true
                         }
                     })
-                    t1.from(heading,{ y: 100, opacity: 0})
+                    t1.from(heading,{
+                        y: 100, 
+                        opacity: 0, 
+                        duration : 1.5, 
+                        stagger: {
+                            each: 0.3,
+                            from: "left",
+                            ease: Power2,
+                        }
+                    })
                     .from(Center,{
                         scale: 0.5,
                         opacity: 0,
                         y: 100,
+                        duration: 3,
                         stagger: {
-                            each: 0.1,
+                            each: 0.3,
                             from: "center",
                             grid: "auto",
                             ease: Power2.inOut,
@@ -57,7 +67,15 @@ export default function Skills() {
 
   return (
     <section className={`${styles.skills_section} SkillSection`}>
-        <h1 className={`${styles.skills_heading} heading`} >Skills</h1>
+        <div className={`${styles.heading_container}`}>
+            <h1 className={`${styles.skills_heading} Skillheading`} >S</h1>
+            <h1 className={`${styles.skills_heading} Skillheading`} >k</h1>
+            <h1 className={`${styles.skills_heading} Skillheading`} >i</h1>
+            <h1 className={`${styles.skills_heading} Skillheading`} >l</h1>
+            <h1 className={`${styles.skills_heading} Skillheading`} >l</h1>
+            <h1 className={`${styles.skills_heading} Skillheading`} >s</h1>
+
+        </div>
         <div className={`${styles.skills}`}>
             <div className={`${styles.java} ${styles.center} center`}>
                 <svg fill="white" height="100px" width="100px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" 

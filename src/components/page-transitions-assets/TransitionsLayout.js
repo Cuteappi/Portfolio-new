@@ -44,6 +44,7 @@ export default function TransitionLayout ({ children }){
     }
 
     var onPageExit = (element) => {
+        setCompleted(false)
         gsap.set(element,{
             y: 0,
             autoAlpha: 1,

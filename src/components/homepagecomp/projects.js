@@ -1,5 +1,5 @@
 import styles from './scss/projects.module.scss'
-import { useEffect, useContext, useRef } from 'react'
+import { useEffect, useContext } from 'react'
 import { TransitionContext } from '@/contexts/TransitionContext'
 import { HomeContext } from '@/contexts/HomeContext'
 import { gsap }  from 'gsap'
@@ -15,8 +15,6 @@ export default function Projects() {
     useEffect(() =>{
         if (!completed) return
         if(MainSec){
-
-
 
             const ctx = gsap.context(()=>{
     
@@ -58,19 +56,25 @@ export default function Projects() {
             <h1 className={`${styles.projects__title} Projectheading`}>Projects</h1>
             <div className={`${styles.projects__container} Projectheading`}>
                 <div className={`${styles.projects__container__info} InfoHolder`}>
-                    <div className={`${styles.projects__container__info__1} ${styles.projects__container__info__size}`}>
-                        <h1>Personal Portfolio</h1>
-                    </div>
+                    <div className={`${styles.projects__container__info__flex}`}>
 
-                    <div className={`${styles.projects__container__info__1} ${styles.projects__container__info__size}`}>
-                        <h1>Food Ordering</h1>
-                        <h1>E-commerce website</h1>
+                        <div className={`${styles.projects__container__info__flex__1} ${styles.projects__container__info__size}`}>
+                            <h1>Personal Portfolio</h1>
+                            <div>Made using Nextjs</div>
+                        </div>
+
+                        <div className={`${styles.projects__container__info__flex__2} ${styles.projects__container__info__size}`}>
+                            <h1>Food Ordering</h1>
+                            <h1>E-commerce website</h1>
+                            <div>Made using Nodejs, Mongodb</div>
+                            <p>A complete E-commerce website that uses Razorpay Api for <b>Transactions</b> and Session management</p>
+                        </div>
                     </div>
 
                 </div>
                 <div className={`${styles.projects__container__pics} PicHolder`}>
-                    <img src='/images/portfolio.png' className={styles.projects__container__pics__img}/>
-                    <img src='/images/foodOrderingSystem.png' className={styles.projects__container__pics__img}/>
+                    <img src='/images/portfolio.jpg' className={styles.projects__container__pics__img}/>
+                    <img src='/images/food.jpg' className={styles.projects__container__pics__img}/>
                 </div>
             </div>
             

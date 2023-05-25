@@ -11,26 +11,46 @@
         font-size: 8vh;
         font-family: 'Allerta Stencil', sans-serif;
     }
+
     &__container{
         display: flex;
-        justify-content: space-around;
-        //gap: 100px;
+        justify-content: center;
+        gap: 250px;
+        min-height: min-content;
 
         &__info{
             overflow: hidden;
-            margin-left: 50px;
-            width: 35%;
 
+            &__flex{
+                height: 563px;
+
+                &__1, &__2{
+                    & div,p{
+                        font-size: 22px;
+                        font-family: 'Allerta Stencil', sans-serif;
+                        letter-spacing: 5px;
+                    }
+                }
+            }
+            
             &__size{
-                float: left;
-                height: 100%;
-                width: 100%;
+                box-sizing: border-box;
+                padding: 120px 0 0 100px;
+                height: 563px;
+                width: 600px;
+            }
+
+            & h1{
+                margin: 0 0 70px 0;
+                font-size: 50px;
+                font-family: 'Allerta Stencil', sans-serif;
             }
         }
+        
 
         &__pics{
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             height: 563px;
             width: 1000px;
             overflow: hidden;
@@ -39,12 +59,7 @@
                 height: 100%;
                 width: 100%;
             }
-
-            & h1{
-                font-size: 40px;
-                font-family: 'Allerta Stencil', sans-serif;
-            }
         }
-}
+    }
     
 }

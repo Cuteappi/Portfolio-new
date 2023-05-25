@@ -3,6 +3,8 @@ import Navbar from '@/components/homepagecomp/Navbar'
 import AboutMe from '@/components/homepagecomp/about-me'
 import Skills from '@/components/homepagecomp/skills'
 import Projects from '@/components/homepagecomp/projects'
+import Contactme from '@/components/homepagecomp/contactme'
+
 import { HomeContext } from '@/contexts/HomeContext'
 import { TransitionContext } from '@/contexts/TransitionContext'
 import { useEffect, useRef, useContext } from 'react'
@@ -29,6 +31,7 @@ export default function Homepage() {
                 <Skills />
                 <Projects />
             </section>
+            <Contactme/>
         </div>
     )
 }

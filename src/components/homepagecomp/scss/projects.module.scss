@@ -1,49 +1,72 @@
 .projects{
     overflow: hidden;
     padding: 84px 0 0 0;
-    
+    height: 100vh;
     z-index: 100;
     color: aliceblue;
 
     &__title{
         text-align: center;
-        margin: 5vh 0 15vh 0;
-        font-size: 10vh;
+        margin: 2vh 0 15vh 0;
+        font-size: 8vh;
         font-family: 'Allerta Stencil', sans-serif;
     }
 
-    &__1{
-        min-height: 100vh;
+    &__container{
         display: flex;
         justify-content: center;
-        gap: 5vh;
-        transform: translateY(100px);
+        gap: 250px;
+        min-height: min-content;
 
-        &__img{
-            height: 50%;
-            width: 50%;
+        &__info{
+            overflow: hidden;
+
+            &__flex{
+                height: 563px;
+
+                &__1, &__2{
+                    overflow: hidden;
+                    box-sizing: border-box;
+                    padding: 120px 0 0 100px;
+
+                    & div,p{
+                        font-size: 22px;
+                        font-family: 'Allerta Stencil', sans-serif;
+                        letter-spacing: 5px;
+                    }
+                }
+
+                &__2{
+                    padding: 80px 0 0 80px;
+                }
+            }
+            
+            &__size{
+                //box-sizing: border-box;
+                height: 563px;
+                width: 600px;
+            }
+
+            & h1{
+                margin: 0 0 70px 0;
+                font-size: 50px;
+                font-family: 'Allerta Stencil', sans-serif;
+            }
         }
+        
 
-        & h1{
-            font-size: 40px;
-            font-family: 'Allerta Stencil', sans-serif;
+        &__pics{
+            display: flex;
+            flex-direction: row;
+            height: 563px;
+            width: 1000px;
+            overflow: hidden;
+
+            &__img{
+                height: 100%;
+                width: 100%;
+            }
         }
     }
-
-    &__2{
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        gap: 40px;
-        transform: translateY(100px);
-        &__img{
-            height: 50%;
-            width: 50%;
-        }
-
-        & h1{
-            font-size: 30px;
-            font-family: 'Allerta Stencil', sans-serif;
-        }
-    }
+    
 }

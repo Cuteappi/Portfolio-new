@@ -29,6 +29,7 @@ export default function aboutMe() {
                         start: '-6.5% top',
                         end: '+=1500px',
                         pin: true,
+                        anticipatePin: 1,
                         scrub: 1.5,
                         //markers: true
                     }

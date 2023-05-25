@@ -26,17 +26,17 @@ export default function Skills() {
                         scrollTrigger:{
                             trigger: wrapper,
                             start: 'top top',
-                            end: '+=2000px',
+                            end: '+=4000px',
                             pin: true,
                             anticipatePin: 1,
                             scrub: 1.5,
-                            //markers: true
                         }
                     })
+
                     t1.from(heading,{
                         y: 100, 
                         opacity: 0, 
-                        duration : 1.5, 
+                        duration : 1, 
                         stagger: {
                             each: 0.3,
                             from: "left",
@@ -55,6 +55,28 @@ export default function Skills() {
                             ease: Power2.inOut,
                         }
                     })
+                    .to(heading,{
+                        y: -100, 
+                        opacity: 0, 
+                        duration : 1, 
+                        stagger: {
+                            each: -0.2,
+                            from: "right",
+                            ease: Power2,
+                        }
+                    },6)
+                    .to(Center,{
+                        scale: 0.5,
+                        opacity: 0,
+                        y: -100,
+                        duration: 3,
+                        stagger: {
+                            each: 0.3,
+                            from: "center",
+                            grid: "auto",
+                            ease: Power2.inOut,
+                        }
+                    },6)
 
             })
 

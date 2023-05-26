@@ -31,7 +31,8 @@ export default function Contactme() {
             const ctx = gsap.context(()=>{
 
                 const tl = gsap.timeline({repeat: -1, yoyo: true})
-                tl.to(cwaves[0],{ y: random, duration: 5, ease: 'power1.easeInOut'},0)
+                tl
+                .to(cwaves[0],{ y: random, duration: 5, ease: 'power1.easeInOut'},0)
                 .to(cwaves[1],{ y: random, duration: 5, ease: 'power1.easeInOut'},0.1)
                 .to(cwaves[2],{ y: random, duration: 5, ease: 'power1.easeInOut'},0.3)
                 .to(cwaves[3],{ y: random, duration: 5, ease: 'power1.easeInOut'},0.2)

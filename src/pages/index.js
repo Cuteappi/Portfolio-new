@@ -1,10 +1,10 @@
-import Link from 'next/link'
+import Homepage from '@/components/homepagecomp/homepage'
+import { HomeProvider } from '@/contexts/HomeContext'
 
-export default function Index() {
+export default function home() {
     return (
-        <div style={{minHeight: '100vh', minWidth: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', background: 'rgb(0, 0, 0)'}}>
-            <Link href='/home' >HOME</Link>
-        </div>
-        
+        <HomeProvider>
+            <Homepage />
+        </HomeProvider>
     )
 }

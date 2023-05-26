@@ -3,7 +3,7 @@ import { useEffect, useContext } from 'react'
 import { TransitionContext } from '@/contexts/TransitionContext'
 import { HomeContext } from '@/contexts/HomeContext'
 import { gsap }  from 'gsap'
-import { Power2 } from "gsap";
+import { Back } from "gsap";
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -19,8 +19,30 @@ export default function Contactme() {
             const heading = MainSec.current.querySelectorAll(`.Contactheading`)
             const Bgtrans = MainSec.current.querySelectorAll(`.Bgtrans`)
             const Mail = MainSec.current.querySelector(`.Mail`)
+            const cwaves = MainSec.current.querySelectorAll(`.Cwavestop`)
+            const waves = MainSec.current.querySelectorAll(`.Cwaves`)
+
+            function random(){
+                const arr = [1, 2, 3, 4, -1, -2, -3, -4]
+                const randomIndex = Math.floor(Math.random() * arr.length);
+                return `${arr[randomIndex]}vh`
+            }
 
             const ctx = gsap.context(()=>{
+
+                const tl = gsap.timeline({repeat: -1, yoyo: true})
+                tl.to(cwaves[0],{ y: random, duration: 5, ease: 'power1.easeInOut'},0)
+                .to(cwaves[1],{ y: random, duration: 5, ease: 'power1.easeInOut'},0.1)
+                .to(cwaves[2],{ y: random, duration: 5, ease: 'power1.easeInOut'},0.3)
+                .to(cwaves[3],{ y: random, duration: 5, ease: 'power1.easeInOut'},0.2)
+                .to(cwaves[4],{ y: random, duration: 5, ease: 'power1.easeInOut'},0.4)
+                
+                .to(waves[0],{ y: random, duration: 5, ease: 'power1.easeInOut'},0)
+                .to(waves[1],{ y: random, duration: 5, ease: 'power1.easeInOut'},0.1)
+                .to(waves[2],{ y: random, duration: 5, ease: 'power1.easeInOut'},0.3)
+                .to(waves[3],{ y: random, duration: 5, ease: 'power1.easeInOut'},0.2)
+                .to(waves[4],{ y: random, duration: 5, ease: 'power1.easeInOut'},0.4)
+
     
                 const t1 = gsap.timeline({
                     scrollTrigger:{
@@ -49,11 +71,11 @@ export default function Contactme() {
         <section>
             <div className={`${styles.contactme} ContactSection`}>
 
-                <div className={`${styles.Cwaves} ${styles.Cwavetop0} Bgtrans`}></div>
-                <div className={`${styles.Cwaves} ${styles.Cwavetop1}`}></div>
-                <div className={`${styles.Cwaves} ${styles.Cwavetop2}`}></div>
-                <div className={`${styles.Cwaves} ${styles.Cwavetop3}`}></div>
-                <div className={`${styles.Cwaves} ${styles.Cwavetop4}`}></div>
+                <div className={`${styles.Cwaves} ${styles.Cwavetop0} Cwavestop Bgtrans`}></div>
+                <div className={`${styles.Cwaves} ${styles.Cwavetop1} Cwavestop`}></div>
+                <div className={`${styles.Cwaves} ${styles.Cwavetop2} Cwavestop`}></div>
+                <div className={`${styles.Cwaves} ${styles.Cwavetop3} Cwavestop`}></div>
+                <div className={`${styles.Cwaves} ${styles.Cwavetop4} Cwavestop`}></div>
 
                 <div className={`${styles.contactformbox}`}>
                     <div className={`${styles.heading} Contactheading`}>
@@ -64,11 +86,11 @@ export default function Contactme() {
                     </div>
                 </div>
                 
-                <div className={`${styles.Cwaves} ${styles.Cwave0}`}></div>
-                <div className={`${styles.Cwaves} ${styles.Cwave1}`}></div>
-                <div className={`${styles.Cwaves} ${styles.Cwave2}`}></div>
-                <div className={`${styles.Cwaves} ${styles.Cwave3}`}></div>
-                <div className={`${styles.Cwaves} ${styles.Cwave4}`}></div>
+                <div className={`${styles.Cwaves} ${styles.Cwave0} Cwaves`}></div>
+                <div className={`${styles.Cwaves} ${styles.Cwave1} Cwaves`}></div>
+                <div className={`${styles.Cwaves} ${styles.Cwave2} Cwaves`}></div>
+                <div className={`${styles.Cwaves} ${styles.Cwave3} Cwaves`}></div>
+                <div className={`${styles.Cwaves} ${styles.Cwave4} Cwaves`}></div>
             </div>
         </section>
     )

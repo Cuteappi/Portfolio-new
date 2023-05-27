@@ -19,7 +19,6 @@ export default function Homepage() {
         setMainSec(mainsec)
         if(completed.state) return
         setCompleted({state: true})
-        console.log(completed)
     },[completed])
 
     

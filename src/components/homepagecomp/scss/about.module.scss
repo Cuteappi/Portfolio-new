@@ -5,12 +5,6 @@
     padding: 6vh 0 0 0;
     isolation: isolate;
 
-    // &_wrapper{
-    //     position: inherit;
-    //     width: 100%;
-    //     min-height: 100vh;
-    // }
-
     & .waves{
         position: absolute;
         left: 0;
@@ -75,6 +69,66 @@
         letter-spacing: 5px;
     }
 
+    & .about{
+        position: absolute;
+        top: 0;
+        width: 100%;
+        min-height: 100vh;
+        z-index: 10;
+
+        &_word{
+            position: absolute;
+            text-align: center;
+            transform: rotateZ(-90deg);
+            transform-origin: right bottom;
+            top: 28%;
+            right: 0;
+            background: transparent;
+            border: none;
+            padding-bottom: 10px;
+            font-size: 25px;
+            font-family: 'Allerta Stencil', sans-serif;
+            transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+            &::after{
+                content: '';
+                position: absolute;
+                background: black;
+                left: 0;
+                bottom: 8px;
+                width: 100%;
+                height: 2px;
+                transform: scaleX(0);
+                transform-origin: center center;
+                transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+            }
+            &:hover::after{
+                transform: scaleX(1);
+            }
+
+            &:hover{
+                scale: 1.2
+            }
+        }
+
+        &_Past{
+            position: absolute;
+            top: 0;
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            transform: translateX(100%);
+            height: 100%;
+            width: 100%;
+            z-index: 10;
+
+            &_cross{
+                position: absolute;
+                top: 0;
+                right: 10px;
+            }
+        }
+    }
+
     & .my_redirects{
         display: flex;
         justify-content: center;
@@ -116,6 +170,8 @@
         } 
     }
 }
+
+
 
 @media screen and (max-width: 600px) {
     .about_section{

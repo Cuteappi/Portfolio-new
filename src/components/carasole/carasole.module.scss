@@ -1,0 +1,164 @@
+.about{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    min-height: 100vh;
+    z-index: 10;
+
+    &_word{
+        position: absolute;
+        text-align: center;
+        transform: rotateZ(-90deg);
+        transform-origin: right bottom;
+        top: 28%;
+        right: 0;
+        background: transparent;
+        border: none;
+        padding-bottom: 10px;
+        font-size: 25px;
+        font-family: 'Allerta Stencil', sans-serif;
+        transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+        &::after{
+            content: '';
+            position: absolute;
+            background: black;
+            left: 0;
+            bottom: 8px;
+            width: 100%;
+            height: 2px;
+            transform: scaleX(0);
+            transform-origin: center center;
+            transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+        }
+        &:hover::after{
+            transform: scaleX(1);
+        }
+
+        &:hover{
+            scale: 1.2;
+        }
+    }
+
+    &_Past{
+        box-sizing: border-box;
+        position: absolute;
+        top: 0;
+        backdrop-filter: blur(10px);
+        transform: translateX(100dvw);
+        padding-top: 20px;
+        height: 100%;
+        width: 100vw;
+        z-index: 3;
+
+        &_cross{
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 20px 25px 0 0;
+
+            &_svg{
+                width: 60px ; 
+                height: 60px;
+                scale: 1;
+                transform-origin: center center;
+                transition: scale 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+                &:hover{
+                    scale: 1.2;
+                }
+            }
+        }
+
+        &_section{
+            font-family: 'Tomorrow', sans-serif;
+            font-size: 20px;
+            margin: 50px 0 50px 0;
+            padding-top: 30px;
+            height: 70%;
+            overflow: hidden;
+
+            &_container{
+                display: flex;
+                width: 200dvw;
+            }
+
+            &_me{
+                box-sizing: border-box;
+                display: flex;
+                justify-content: space-between;
+                padding: 25px;
+                width: 100dvw;
+
+                &_content{
+                    width: 65%;
+
+                    & .h3{  
+                        font-size: 60px;
+                        margin-bottom: 40px;
+                        margin-left: 20px;
+                    }
+                    & .p{  
+                        font-size: 26px;
+                        margin: 0 0 36px 56px;
+                    }
+                }
+
+                &_pic{
+                    width: 30%;
+                }
+            }
+
+            &_uni{
+                box-sizing: border-box;
+                display: flex;
+                justify-content: space-between;
+                padding: 25px;
+                width: 100dvw;
+
+                &_content{
+                    width: 65%;
+
+                    & .h3{  
+                        font-size: 50px;
+                        margin-bottom: 40px;
+                    }
+                    & .p{  
+                        font-size: 24px;
+                        margin: 0 0 26px 36px;
+
+                        & p{
+                            font-size: 20px;
+                            margin: 0 0 0 26px;
+                        }
+                    }
+                }
+
+                &_pic{
+                    width: 30%;
+                }
+
+            }
+
+        }
+    }
+
+    & .buttons{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 10px;
+
+        &_x{
+            height: 70%;
+            width: 5%;
+            margin-right: 2%;
+            background: rgba(255, 85, 85, 0.244);
+            transition: background 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+            &:hover{
+                background: rgba(255, 255, 255, 0.788);
+            }
+        }
+    }
+}

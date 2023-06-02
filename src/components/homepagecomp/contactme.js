@@ -55,7 +55,7 @@ export default function Contactme() {
                 })
                 t1.from(heading,{ y: -600, opacity: 0},0)
                 .fromTo(Bgtrans,{background: 'linear-gradient(180deg, rgb(0, 0, 0) 100%, rgb(56, 5, 5) 100%)'},
-                    {background: 'linear-gradient(180deg, rgb(0, 0, 0) 0%, rgb(56, 5, 5) 15%)'},0)
+                    {background: 'linear-gradient(180deg, rgb(0, 0, 0) 0%, rgb(56, 5, 5) 15%)', duration: 5},0)
                 .from(Mail,{ y: 600, opacity: 0},0)   
             })
             return ()=> {

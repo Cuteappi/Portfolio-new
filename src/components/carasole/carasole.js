@@ -2,9 +2,9 @@ import styles from './/carasole.module.scss'
 import { useEffect, useContext, useRef, useState } from 'react'
 //import { HomeContext } from '@/contexts/HomeContext'
 import { gsap }  from 'gsap'
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+import { ScrollToPlugin} from 'gsap/dist/ScrollToPlugin'
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollToPlugin)
 
 export default function Carasole() {
 
@@ -17,10 +17,13 @@ export default function Carasole() {
         const Cross = backstory.current.querySelector('.Cross')
         const Button = backstory.current.querySelectorAll('.Button')      
         const Container = backstory.current.querySelector('.Container')
+        const Sec = backstory.current.querySelector('.Sec')
 
         let isDown = false;
-        let startX;
-        let scrollLeft;
+        let startX, walk, scrollLeft;
+
+        gsap.fromTo(Button[0],{background: 'rgba(255, 85, 85, 0.244)'},{background: 'rgba(255, 255, 255, 0.788)', duration: 1, ease:'power4.out'},0)
+
 
         Word.addEventListener('click', ()=>{
             const ctx = gsap.context(()=>{
@@ -42,38 +45,79 @@ export default function Carasole() {
 
         Button[0].addEventListener('click', ()=>{
             const ctx = gsap.context(()=>{
-                gsap.to(Container,{x: '0dvw', ease:'power4.out'})
+                const t1 = gsap.timeline()
+                t1.to(Sec,{scrollTo: {x: 0}, ease:'power4.out'},0)
+                .fromTo(Button[0],{background: 'rgba(255, 85, 85, 0.244)'},{background: 'rgba(255, 255, 255, 0.788)', duration: 1, ease:'power4.out'},0)
+                .fromTo(Button[1],{background: 'rgba(255, 85, 85, 0.244)'},{background: 'rgba(255, 85, 85, 0.244)', duration: 1, ease:'power4.out'},0)
+
             })
             return ()=> ctx.revert()
         })
         Button[1].addEventListener('click', ()=>{
+            let limit = Sec.offsetWidth;
             const ctx = gsap.context(()=>{
-                gsap.to(Container,{x: '-100dvw', ease:'power4.out'})
+                const t1 = gsap.timeline()
+                t1.to(Sec,{scrollTo: {x: limit}, ease:'power4.out'},0)
+                .fromTo(Button[1],{background: 'rgba(255, 85, 85, 0.244)'},{background: 'rgba(255, 255, 255, 0.788)', duration: 1, ease:'power4.out'},0)
+                .fromTo(Button[0],{background: 'rgba(255, 85, 85, 0.244)'},{background: 'rgba(255, 85, 85, 0.244)', duration: 1, ease:'power4.out'},0)
+
             })
             return ()=> ctx.revert()
         })
 
-        
-        Container.addEventListener('mousedown', (e) => {
-            isDown = true
-            startX = e.pageX - Container.offsetLeft
-            scrollLeft = Container.scrollLeft
-        })
-
-        Container.addEventListener('mouseleave', () => {
-            isDown = false
-        })
-
         Container.addEventListener('mouseup', () => {
             isDown = false
+            let limit = Sec.offsetWidth;
+            if(Sec.scrollLeft > limit/2){
+                const ctx = gsap.context(()=>{
+                    const t1 = gsap.timeline()
+                    t1.to(Sec,{scrollTo: {x: limit}, ease:'power4.out'},0)
+                    .fromTo(Button[1],{background: 'rgba(255, 85, 85, 0.244)'},{background: 'rgba(255, 255, 255, 0.788)', duration: 1, ease:'power4.out'},0)
+                    .fromTo(Button[0],{background: 'rgba(255, 85, 85, 0.244)'},{background: 'rgba(255, 85, 85, 0.244)', duration: 1, ease:'power4.out'},0)
+                })
+                return ()=> ctx.revert() 
+
+            }else if(Sec.scrollLeft < limit/2){
+                const ctx = gsap.context(()=>{
+                    const t1 = gsap.timeline()
+                    t1.to(Sec,{scrollTo: {x: 0}, ease:'power4.out'},0)
+                    .fromTo(Button[0],{background: 'rgba(255, 85, 85, 0.244)'},{background: 'rgba(255, 255, 255, 0.788)', duration: 1, ease:'power4.out'},0)
+                    .fromTo(Button[1],{background: 'rgba(255, 85, 85, 0.244)'},{background: 'rgba(255, 85, 85, 0.244)', duration: 1, ease:'power4.out'},0)
+                })
+                return ()=> ctx.revert() 
+            }
         })
 
         Container.addEventListener('mousemove', (e) => {
             if(!isDown) return;
             e.preventDefault();
             const x = e.pageX - Container.offsetLeft
-            const walk = (x - startX) * 3 //scroll-fast
-            Container.scrollLeft = scrollLeft - walk
+            walk = (x - startX)
+            Sec.scrollLeft = scrollLeft - walk 
+        })
+        
+        Container.addEventListener('mousedown', (e) => {
+            isDown = true
+            
+            startX = e.pageX - Container.offsetLeft
+            scrollLeft = Sec.scrollLeft
+        })
+
+        Container.addEventListener('mouseleave', () => {
+            isDown = false
+            let limit = Sec.offsetWidth;
+            if(Sec.scrollLeft > limit/2){
+                const ctx = gsap.context(()=>{
+                    gsap.to(Sec,{scrollTo: {x: limit},ease:'power4.out'})
+                })
+                return ()=> ctx.revert() 
+
+            }else if(Sec.scrollLeft < limit/2){
+                const ctx = gsap.context(()=>{
+                    gsap.to(Sec,{scrollTo: {x: 0},ease:'power4.out'})
+                })
+                return ()=> ctx.revert() 
+            }
         })
     })
 
@@ -90,7 +134,7 @@ export default function Carasole() {
                     </svg>
                 </div>
 
-                <div className={`${styles.about_Past_section}`}>
+                <div className={`${styles.about_Past_section} Sec`}>
                     <div className={`${styles.about_Past_section_container} Container`}>
                         <div className={`${styles.about_Past_section_me}`}>
                             <div className={`${styles.about_Past_section_me_content}`}>

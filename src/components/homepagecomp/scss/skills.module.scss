@@ -26,9 +26,12 @@
         grid-template-rows: 1fr 1fr 1fr;
 
         & .center{
+            width: 100%;
             display:flex;
             justify-content: center;
             align-items: center;
+            //overflow: visible;
+
         }
     }
 }

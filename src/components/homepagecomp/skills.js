@@ -14,6 +14,7 @@ export default function Skills() {
     const { completed } = useContext(TransitionContext)
     const { MainSec } = useContext(HomeContext)
 
+
     useEffect(() =>{
         if (!completed) return
         if(MainSec){
@@ -100,7 +101,7 @@ export default function Skills() {
         </div>
         <div className={`${styles.skills}`}>
             <div className={`${styles.java} ${styles.center} center`}>
-                <svg fill="white" height="100px" width="100px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" 
+                <svg fill="white" height="100px" width="100px" version="1.1" id="java" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" 
                     viewBox="0 0 305.001 305.001">
                     <g id="XMLID_7_">
                         <path id="XMLID_8_" d="M150.99,56.513c-14.093,9.912-30.066,21.147-38.624,39.734c-14.865,32.426,30.418,67.798,32.353,69.288 c0.45,0.347,0.988,0.519,1.525,0.519c0.57,0,1.141-0.195,1.605-0.583c0.899-0.752,1.154-2.029,0.614-3.069 c-0.164-0.316-16.418-31.888-15.814-54.539c0.214-7.888,11.254-16.837,22.942-26.312c10.705-8.678,22.839-18.514,29.939-30.02 c15.586-25.327-1.737-50.231-1.914-50.479c-0.688-0.966-1.958-1.317-3.044-0.84c-1.085,0.478-1.686,1.652-1.438,2.811 c0.035,0.164,3.404,16.633-5.97,33.6C169.301,43.634,160.816,49.603,150.99,56.513z"/>

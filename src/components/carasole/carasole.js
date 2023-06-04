@@ -66,7 +66,22 @@ export default function Carasole() {
             return ()=> ctx.revert()
         })
 
-        Container.addEventListener('mouseup', () => {
+        const dragstart = (e)=>{
+            isDown = true
+            console.log(e.touches[0].pageX)
+            startX = (e.pageX || e.touches[0].pageX) - Container.offsetLeft
+            scrollLeft = Sec.scrollLeft
+        }
+
+        const dragmove = (e)=>{
+            if(!isDown) return;
+            e.preventDefault();
+            const x = (e.pageX || e.touches[0].pageX) - Container.offsetLeft
+            walk = (x - startX)
+            Sec.scrollLeft = scrollLeft - walk 
+        }
+
+        const dragend = (e)=>{
             isDown = false
             let limit = Sec.offsetWidth;
             if(Sec.scrollLeft > limit/2){
@@ -87,23 +102,17 @@ export default function Carasole() {
                 })
                 return ()=> ctx.revert() 
             }
-        })
+        }
 
-        Container.addEventListener('mousemove', (e) => {
-            if(!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - Container.offsetLeft
-            walk = (x - startX)
-            Sec.scrollLeft = scrollLeft - walk 
-        })
+        Container.addEventListener('mousedown', dragstart)
+        Container.addEventListener('touchstart', dragstart)
         
-        Container.addEventListener('mousedown', (e) => {
-            isDown = true
-            
-            startX = e.pageX - Container.offsetLeft
-            scrollLeft = Sec.scrollLeft
-        })
-
+        Container.addEventListener('mousemove', dragmove)
+        Container.addEventListener('touchmove', dragmove)
+        
+        Container.addEventListener('mouseup', dragend)
+        Container.addEventListener('touchend', dragend)
+        
         Container.addEventListener('mouseleave', () => {
             isDown = false
             let limit = Sec.offsetWidth;

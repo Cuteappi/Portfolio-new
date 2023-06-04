@@ -72,7 +72,8 @@ export default function Navbar() {
 			var limit = 3 * el.clientHeight + 10500
 
 			//HOME
-			Links[1].addEventListener('click', ()=>{
+			Links[1].addEventListener('click', (e)=>{
+				e.preventDefault()
 				const ctx = gsap.context(()=>{
 					gsap.to(el,{duration: 2, scrollTo: {y: 0}, ease:'power4.out'})
 				})
@@ -80,15 +81,17 @@ export default function Navbar() {
 			})
 
 			//skills
-			Links[2].addEventListener('click', ()=>{
+			Links[2].addEventListener('click', (e)=>{
+				e.preventDefault()
 				const ctx = gsap.context(()=>{
-					gsap.to(el,{duration: 2, scrollTo: {y: 4700}, ease:'power4.out'})
+					gsap.to(el,{duration: 2, scrollTo: {y: 4500}, ease:'power4.out'})
 				})
 				return ()=> ctx.revert()
 			})
 
 			//projects
-			Links[3].addEventListener('click', ()=>{
+			Links[3].addEventListener('click', (e)=>{
+				e.preventDefault()
 				const ctx = gsap.context(()=>{
 					gsap.to(el,{duration: 2, scrollTo: {y: 8400}, ease:'power4.out'})
 				})
@@ -96,9 +99,10 @@ export default function Navbar() {
 			})
 
 			//contact
-			Links[4].addEventListener('click', ()=>{
+			Links[4].addEventListener('click', (e)=>{
+				e.preventDefault()
 				const ctx = gsap.context(()=>{
-					gsap.to(el,{duration: 5, scrollTo: {y: limit + 500}, ease:'power4.out'})
+					gsap.to(el,{duration: 3, scrollTo: {y: limit + 500}, ease:'power4.out'})
 				})
 				return ()=> ctx.revert()
 			})

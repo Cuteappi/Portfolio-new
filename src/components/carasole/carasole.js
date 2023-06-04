@@ -68,7 +68,6 @@ export default function Carasole() {
 
         const dragstart = (e)=>{
             isDown = true
-            console.log(e.touches[0].pageX)
             startX = (e.pageX || e.touches[0].pageX) - Container.offsetLeft
             scrollLeft = Sec.scrollLeft
         }
@@ -87,18 +86,18 @@ export default function Carasole() {
             if(Sec.scrollLeft > limit/2){
                 const ctx = gsap.context(()=>{
                     const t1 = gsap.timeline()
-                    t1.to(Sec,{scrollTo: {x: limit}, ease:'power4.out'},0)
-                    .fromTo(Button[1],{background: 'rgba(255, 85, 85, 0.244)'},{background: 'rgba(255, 255, 255, 0.788)', duration: 1, ease:'power4.out'},0)
-                    .fromTo(Button[0],{background: 'rgba(255, 85, 85, 0.244)'},{background: 'rgba(255, 85, 85, 0.244)', duration: 1, ease:'power4.out'},0)
+                    t1.to(Sec,{scrollTo: {x: limit}, delay: 0.1, duration: 1, ease:'power4.out'},0)
+                    .fromTo(Button[1],{background: 'rgba(255, 85, 85, 0.244)'},{background: 'rgba(255, 255, 255, 0.788)', ease:'power4.out'},0)
+                    .fromTo(Button[0],{background: 'rgba(255, 85, 85, 0.244)'},{background: 'rgba(255, 85, 85, 0.244)', ease:'power4.out'},0)
                 })
                 return ()=> ctx.revert() 
 
             }else if(Sec.scrollLeft < limit/2){
                 const ctx = gsap.context(()=>{
                     const t1 = gsap.timeline()
-                    t1.to(Sec,{scrollTo: {x: 0}, ease:'power4.out'},0)
-                    .fromTo(Button[0],{background: 'rgba(255, 85, 85, 0.244)'},{background: 'rgba(255, 255, 255, 0.788)', duration: 1, ease:'power4.out'},0)
-                    .fromTo(Button[1],{background: 'rgba(255, 85, 85, 0.244)'},{background: 'rgba(255, 85, 85, 0.244)', duration: 1, ease:'power4.out'},0)
+                    t1.to(Sec,{scrollTo: {x: 0}, delay: 0.1, duration: 1, ease:'power4.out'},0)
+                    .fromTo(Button[0],{background: 'rgba(255, 85, 85, 0.244)'},{background: 'rgba(255, 255, 255, 0.788)', ease:'power4.out'},0)
+                    .fromTo(Button[1],{background: 'rgba(255, 85, 85, 0.244)'},{background: 'rgba(255, 85, 85, 0.244)', ease:'power4.out'},0)
                 })
                 return ()=> ctx.revert() 
             }
@@ -118,16 +117,18 @@ export default function Carasole() {
             let limit = Sec.offsetWidth;
             if(Sec.scrollLeft > limit/2){
                 const ctx = gsap.context(()=>{
-                    gsap.to(Sec,{scrollTo: {x: limit},ease:'power4.out'})
+                    const t1 = gsap.timeline()
+                    t1.to(Sec,{scrollTo: {x: limit}, ease:'power4.out'})
                 })
                 return ()=> ctx.revert() 
 
             }else if(Sec.scrollLeft < limit/2){
                 const ctx = gsap.context(()=>{
-                    gsap.to(Sec,{scrollTo: {x: 0},ease:'power4.out'})
+                    gsap.to(Sec,{scrollTo: {x: 0}, ease:'power4.out'})
                 })
                 return ()=> ctx.revert() 
             }
+            
         })
     })
 

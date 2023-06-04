@@ -84,21 +84,22 @@ export default function Carasole() {
             isDown = false
             let limit = Sec.offsetWidth;
             if(Sec.scrollLeft > limit/2){
-
+                const ctx = gsap.context(()=>{
                     const t1 = gsap.timeline()
-                    t1.to(Sec,{scrollTo: {x: limit}, duration: 1, ease:'power4.out'},0)
+                    t1.to(Sec,{scrollTo: {x: limit}, ease:'power4.out'},0)
                     .fromTo(Button[1],{background: 'rgba(255, 85, 85, 0.244)'},{background: 'rgba(255, 255, 255, 0.788)', ease:'power4.out'},0)
                     .fromTo(Button[0],{background: 'rgba(255, 85, 85, 0.244)'},{background: 'rgba(255, 85, 85, 0.244)', ease:'power4.out'},0)
-
+                })
+                return ()=> ctx.revert() 
 
             }else if(Sec.scrollLeft < limit/2){
-
+                const ctx = gsap.context(()=>{
                     const t1 = gsap.timeline()
-                    t1.to(Sec,{scrollTo: {x: 0}, duration: 1, ease:'power4.out'},0)
+                    t1.to(Sec,{scrollTo: {x: 0}, ease:'power4.out'},0)
                     .fromTo(Button[0],{background: 'rgba(255, 85, 85, 0.244)'},{background: 'rgba(255, 255, 255, 0.788)', ease:'power4.out'},0)
                     .fromTo(Button[1],{background: 'rgba(255, 85, 85, 0.244)'},{background: 'rgba(255, 85, 85, 0.244)', ease:'power4.out'},0)
-
-
+                })
+                return ()=> ctx.revert() 
             }
         }
 

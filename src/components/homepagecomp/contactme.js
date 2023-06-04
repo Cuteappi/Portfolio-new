@@ -48,15 +48,15 @@ export default function Contactme() {
                 const t1 = gsap.timeline({
                     scrollTrigger:{
                         trigger: Contact,
-                        start: 'center bottom',
-                        end: 'bottom bottom',
-                        scrub: 1.5,
+                        start: '50% bottom',
+                        end: '90% bottom',
+                        scrub: 1.5
                     }
                 })
-                t1.from(heading,{ y: -600, opacity: 0},0)
+                t1.from(heading,{ y: -600, opacity: 0, duration: 5},0)
                 .fromTo(Bgtrans,{background: 'linear-gradient(180deg, rgb(0, 0, 0) 100%, rgb(56, 5, 5) 100%)'},
                     {background: 'linear-gradient(180deg, rgb(0, 0, 0) 0%, rgb(56, 5, 5) 15%)', duration: 5},0)
-                .from(Mail,{ y: 600, opacity: 0},0)   
+                .from(Mail,{ y: 600, opacity: 0, duration: 5},0)   
             })
             return ()=> {
                 ScrollTrigger.killAll()

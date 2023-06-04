@@ -33,9 +33,9 @@ export default function Navbar() {
 					scrollTrigger:{
 						trigger: About,
 						start: 'top top',
-						//pin: true,
-						end: 'top',
-						scrub: 1
+						end: 'bottom top',
+						scrub: 1,
+						fastScrollEnd: true
 					}
 				})
 				t1.fromTo(Links,{ y:0 },{ y:-100 , stagger: -0.1, opacity: 0})
@@ -46,7 +46,8 @@ export default function Navbar() {
 						trigger: Skill,
 						start: '180% top',
 						end: '250% top',
-						scrub: 1
+						scrub: 1,
+						fastScrollEnd: true					
 					}
 				})
 				t2.fromTo(Links,{ y:-100 },{ y: 0, delay:0.5, color: 'white',stagger: 0.1, opacity: 1})
@@ -67,6 +68,7 @@ export default function Navbar() {
 			const Nav = MainSec.current.querySelector(`.Nav`)
 
 			var setter = 0
+			var scrolling = false
 			var limit = 3 * el.clientHeight + 10500
 
 			//HOME
@@ -96,7 +98,7 @@ export default function Navbar() {
 			//contact
 			Links[4].addEventListener('click', ()=>{
 				const ctx = gsap.context(()=>{
-					gsap.to(el,{duration: 5, scrollTo: {y: limit}, ease:'power4.out'})
+					gsap.to(el,{duration: 5, scrollTo: {y: limit + 500}, ease:'power4.out'})
 				})
 				return ()=> ctx.revert()
 			})
@@ -104,14 +106,14 @@ export default function Navbar() {
 			
 			icon.addEventListener('click', ()=>{
 				if(window.innerWidth < 600){
+					if(scrolling) return
 					if(!setter){
 						setter = 1
 						icon.classList.add(`${styles.open}`)
-						for (let i=0; i<Links.length; i++){Links[i].style.display = 'block'}
+						for (let i=1; i<Links.length; i++){Links[i].style.display = 'block'}
 						const ctx = gsap.context(()=>{
 							const t1 = gsap.timeline()
-							t1.to(Nav,{height:'20vh', backdropFilter:'blur(5px)'},0)
-							.to(Nav,{backdropFilter:'blur(50px)'},0.5)
+							t1.to(Nav,{height:'20vh', backdropFilter: 'blur(8px)'})
 						})
 						return ()=> ctx.revert()
 
@@ -120,11 +122,10 @@ export default function Navbar() {
 						icon.classList.remove(`${styles.open}`)
 						const ctx = gsap.context(()=>{
 							const t1 = gsap.timeline()
-							t1.to(Nav,{backdropFilter:'blur(50px)'},0)
-							.to(Nav,{height:'6vh',backdropFilter:'blur(50px)'},0.5)
+							t1.to(Nav,{height:'6vh'})
 						})
 						setTimeout(()=>{
-							for (let i=0; i<Links.length; i++){Links[i].style.display = 'block'}
+							for (let i=1; i<Links.length; i++){Links[i].style.display = 'none'}
 							Nav.style.backdropFilter = 'blur(0px)'
 						},500)
 						return ()=> ctx.revert()
@@ -135,16 +136,17 @@ export default function Navbar() {
 			document.addEventListener('scroll', ()=>{
 				if(window.innerWidth < 600){
 					setter = 0
+					scrolling = true
 					icon.classList.remove(`${styles.open}`)
 					const ctx = gsap.context(()=>{
 						const t1 = gsap.timeline()
-						t1.to(Nav,{backdropFilter:'blur(50px)'},0)
-						.to(Nav,{height:'6vh',backdropFilter:'blur(50px)'},0.5)
+						t1.to(Nav,{height:'6vh'})
 					})
 					setTimeout(()=>{
-						for (let i=0; i<Links.length; i++){Links[i].style.display = 'block'}
+						for (let i=1; i<Links.length; i++){Links[i].style.display = 'none'}
 						Nav.style.backdropFilter = 'blur(0px)'
 					},500)
+					scrolling = false
 					return ()=> ctx.revert()
 				}
 			})

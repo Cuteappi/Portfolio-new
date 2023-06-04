@@ -111,7 +111,7 @@
 
 
 
-@media screen and (min-width: 375px) and (max-width: 600px) {
+@media screen and (min-width: 336px) and (max-width: 600px) {
     .about_section{
 
         & .name{
@@ -121,21 +121,17 @@
         & h1{
             margin-left: 50px;
             font-size: 50px;
-            font-family: 'Allerta Stencil', sans-serif;
         }
 
         & .span{
-            display:block;
             width: 80%;
             margin: 5px 0 0 50px;
             font-size: 20px;
-            font-family: 'Allerta Stencil', sans-serif;
-            letter-spacing: 5px;
         }
     }
 }
 
-@media screen and (min-width: 0px) and (max-width: 375px) {
+@media screen and (min-width: 0px) and (max-width: 360px) {
     .about_section{
         width: 100%;
 

@@ -50,7 +50,7 @@ export default function Navbar() {
 					}
 				})
 				t2.fromTo(Links,{ y:-100 },{ y: 0, delay:0.5, color: 'white',stagger: 0.1, opacity: 1})
-				.fromTo(sp,{ background: 'white' },{ delay:0.5, background: 'white'})
+				.fromTo(sp,{ background: 'black' },{ delay:0.5, background: 'white'})
 			})
 			return ()=> {
 				ScrollTrigger.killAll()
@@ -67,7 +67,7 @@ export default function Navbar() {
 			const Nav = MainSec.current.querySelector(`.Nav`)
 
 			var setter = 0
-			var limit = 2 * el.clientHeight + 11500
+			var limit = 3 * el.clientHeight + 10500
 
 			//HOME
 			Links[1].addEventListener('click', ()=>{
@@ -108,13 +108,26 @@ export default function Navbar() {
 						setter = 1
 						icon.classList.add(`${styles.open}`)
 						for (let i=0; i<Links.length; i++){Links[i].style.display = 'block'}
-						gsap.to(Nav,{height:'20vh'})
+						const ctx = gsap.context(()=>{
+							const t1 = gsap.timeline()
+							t1.to(Nav,{height:'20vh', backdropFilter:'blur(5px)'},0)
+							.to(Nav,{backdropFilter:'blur(50px)'},0.5)
+						})
+						return ()=> ctx.revert()
 
 					} else {
 						setter = 0
 						icon.classList.remove(`${styles.open}`)
-						gsap.to(Nav,{height:'4vh'})
-						setTimeout(()=>{for(let i=1; i<Links.length; i++){Links[i].style.display = 'none'}},500)
+						const ctx = gsap.context(()=>{
+							const t1 = gsap.timeline()
+							t1.to(Nav,{backdropFilter:'blur(50px)'},0)
+							.to(Nav,{height:'6vh',backdropFilter:'blur(50px)'},0.5)
+						})
+						setTimeout(()=>{
+							for (let i=0; i<Links.length; i++){Links[i].style.display = 'block'}
+							Nav.style.backdropFilter = 'blur(0px)'
+						},500)
+						return ()=> ctx.revert()
 					}
 				}
 			})
@@ -123,8 +136,16 @@ export default function Navbar() {
 				if(window.innerWidth < 600){
 					setter = 0
 					icon.classList.remove(`${styles.open}`)
-					gsap.to(Nav,{height:'4vh'})
-					setTimeout(()=>{for(let i=1; i<Links.length; i++){Links[i].style.display = 'none'}},500)
+					const ctx = gsap.context(()=>{
+						const t1 = gsap.timeline()
+						t1.to(Nav,{backdropFilter:'blur(50px)'},0)
+						.to(Nav,{height:'6vh',backdropFilter:'blur(50px)'},0.5)
+					})
+					setTimeout(()=>{
+						for (let i=0; i<Links.length; i++){Links[i].style.display = 'block'}
+						Nav.style.backdropFilter = 'blur(0px)'
+					},500)
+					return ()=> ctx.revert()
 				}
 			})
 		}else{ return }
@@ -133,23 +154,24 @@ export default function Navbar() {
 	return (
 		<div className={`${styles.ul} Nav`}>
 
-				<Link href='/' className={`${styles.links} ${styles.links0} Link`}>SOLO</Link>
-				<div className={`${styles.nav_icon2} icon`}>
-					<span className='sp'></span>
-					<span className='sp'></span>
-					<span className='sp'></span>
-					<span className='sp'></span>
-					<span className='sp'></span>
-					<span className='sp'></span>
-				</div>
+			<Link href='/' className={`${styles.links} ${styles.links0} Link`}>SOLO</Link>
+			
+			<div className={`${styles.nav_icon2} icon`}>
+				<span className='sp'></span>
+				<span className='sp'></span>
+				<span className='sp'></span>
+				<span className='sp'></span>
+				<span className='sp'></span>
+				<span className='sp'></span>
+			</div>
 
 			<div className={`${styles.links} ${styles.links1} Link`}>HOME</div>
 
 			<div className={`${styles.links} ${styles.links2} Link`}>SKILLS</div>
 
-			<div className={`${styles.links} ${styles.links2} Link`}>PROJECTS</div>
+			<div className={`${styles.links} ${styles.links3} Link`}>PROJECTS</div>
 
-			<div className={`${styles.links} ${styles.links3} Link`}>CONTACT</div>
+			<div className={`${styles.links} ${styles.links4} Link`}>CONTACT</div>
 
 		</div>
 	)

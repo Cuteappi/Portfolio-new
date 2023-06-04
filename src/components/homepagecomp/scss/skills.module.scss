@@ -32,12 +32,37 @@
             align-items: center;
             //overflow: visible;
 
+            & .svgel{
+                height: 100px;
+                width: 100px;
+                fill: white;
+
+                &_inside{
+                    fill: white;
+                }
+            }
+
         }
     }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (min-width: 375px) and (max-width: 600px) {
     .skills_section{
+        justify-content: start;
+
+        & .heading_container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 8dvh 0 5dvh 0;
+
+            & .skills_heading{
+                font-size: 5vh;
+                font-family: 'Allerta Stencil', sans-serif;
+            }
+        }
+
+        
         
         & .skills{
             width: 100%;
@@ -45,6 +70,14 @@
             gap: 50px;
             grid-template-columns: 1fr 1fr 1fr;
             grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+
+            & .center{    
+                & .svgel{
+                    height: 80px;
+                    width: 80px;
+                }
+    
+            }
         }
     }
 }   

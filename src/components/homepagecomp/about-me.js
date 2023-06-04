@@ -11,27 +11,6 @@ gsap.registerPlugin(ScrollTrigger)
 export default function aboutMe() {
     const { completed } = useContext(TransitionContext)
     const { MainSec } = useContext(HomeContext)
-    // const backstory = useRef()
-    // const [backstoryState, setbackstoryState] = useState(false)
-
-    // function handleClickAbout(){
-    //     setbackstoryState(true)
-    // }
-
-    // function handleClickCross(){
-    //     setbackstoryState(false)
-    // }
-
-    // useEffect(()=>{
-    //     console.log(backstoryState)
-    //     const el = backstory.current.querySelector('.Backstory')
-    //     if(backstoryState){
-    //         gsap.to(el,{x: 0, opacity: 1})
-    //     }else{
-    //         gsap.to(el,{x: '100dvw', opacity: 0})
-    //     }
-
-    // },[backstoryState])
 
     useEffect(() =>{
         if (!completed.state) return

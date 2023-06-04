@@ -71,3 +71,64 @@
     }
     
 }
+
+@media screen and (min-width: 375px) and (max-width: 600px) {
+    .projects{
+        padding: 56px 0 0 0;
+
+        &__title{
+            margin: 1dvh 0 5dvh 0;
+            font-size: 5dvh;
+        }
+
+        &__container{
+            flex-direction: column-reverse;
+            gap: 7dvh;
+
+            &__info{    
+                &__flex{
+                    height: 50dvh;
+                    &__1{
+                        padding: 10px;
+
+                        & h1{
+                            margin: 0 0 30px 0;
+                            font-size: 35px;
+                        }
+    
+                        & div,p{
+                            padding: 0 0 0 12px;
+                            font-size: 18px;
+                        }
+                    }
+    
+                    &__2{
+                        padding: 10px;
+
+                        & h1{
+                            margin: 0 0 30px 0;
+                            font-size: 25px;
+                        }
+
+                        & div,p{
+                            padding: 0 0 0 12px;
+                            font-size: 18px;
+                        }
+                    }
+                }
+                
+                &__size{
+                    margin: auto;
+                    height: 50dvh;
+                    width: 90%;
+                }
+            }
+            &__pics{
+                margin: auto;
+                height: 51%;
+                width: 90%;
+                overflow: hidden;
+            }
+        }
+    }
+}

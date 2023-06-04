@@ -74,13 +74,19 @@ export default function Projects() {
 
                         <div className={`${styles.projects__container__info__flex__1} ${styles.projects__container__info__size} `}>
                             <h1 className='text'>Personal Portfolio</h1>
-                            <div className='text'>Made using Nextjs</div>
+                            <div className='text'>
+                                Made using Nextjs.
+                                <br/>
+                                <br/>
+                                Here, you will discover a showcase of my skills, experiences, and creative endeavors.
+                            </div>
                         </div>
 
                         <div className={`${styles.projects__container__info__flex__2} ${styles.projects__container__info__size}`}>
                             <h1 className='text'>Food Ordering E-commerce website</h1>
-                            <div className='text'>Made using Nodejs, Mongodb</div>
-                            <p className='text'>A complete E-commerce website that uses Razorpay Api for <b>Transactions</b> and Session management</p>
+                            <div className='text'>Made using Nodejs, Mongodb.</div>
+                            <br/>
+                            <p className='text'>A complete E-commerce website that uses Razorpay Api for <b>Transactions</b> and Session management.</p>
                         </div>
                     </div>
 

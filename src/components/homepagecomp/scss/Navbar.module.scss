@@ -1,11 +1,12 @@
 .ul{
-    position: sticky;
+    position: fixed;
+    width:100%;
     top:0;
     left: 0;
     display:flex;
     list-style-type: none;
     opacity: 0;
-    height: 6vh;
+    height: 6dvh;
     color: black;
     z-index: 100;
 
@@ -135,19 +136,23 @@
 
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (min-width: 375px) and (max-width: 600px) {
     .ul{
-        height: 4vh;
+        height: 6dvh;
         flex-direction: column;
         overflow: hidden;
 
         & .links{
+            box-sizing: border-box;
             display: none;
-            font-size: 26px;
+            font-size: 20px;
+            padding-bottom: 2px;
         }
+
 
         & .links0{
             display: block;
+            font-size: 26px;
         }
 
         & .nav_icon2{

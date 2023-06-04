@@ -46,7 +46,7 @@
     }
 }
 
-@media screen and (min-width: 360px) and (max-width: 600px) {
+@media screen and (min-width: 320px) and (max-width: 600px){
     .skills_section{
         justify-content: start;
 
@@ -58,12 +58,8 @@
 
             & .skills_heading{
                 font-size: 5vh;
-                font-family: 'Allerta Stencil', sans-serif;
             }
         }
-
-        
-        
         & .skills{
             width: 100%;
             display: grid;
@@ -80,4 +76,69 @@
             }
         }
     }
-}   
+}
+
+@media screen and (min-width: 360px) and (max-width: 400px) {
+    .skills_section{
+        & .skills{
+            & .center{    
+                & .svgel{
+                    height: 70px;
+                    width: 70px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 360px) {
+    .skills_section{
+        & .skills{
+            & .center{    
+                & .svgel{
+                    height: 50px;
+                    width: 50px;
+                }
+    
+            }
+        }
+    }
+}
+
+@media screen and (min-height: 600px) and (max-height: 760px){
+    .skills_section{
+        & .skills{
+            & .center{    
+                & .svgel{
+                    height: 50px;
+                    width: 50px;
+                }
+    
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1280px) and (max-width: 1536px){
+    .skills_section{
+        & .heading_container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 8dvh 0 8dvh 0;
+
+            & .skills_heading{
+                font-size: 10vh;
+            }
+        }
+
+        & .skills{
+            & .center{    
+                & .svgel{
+                    height: 100px;
+                    width: 100px;
+                }
+            }
+        }
+    }
+}

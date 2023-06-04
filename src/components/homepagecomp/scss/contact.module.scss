@@ -14,7 +14,7 @@
 
     & .Cwave0{
         top: 25vh;
-        background: linear-gradient(180deg, rgb(56, 5, 5) 70%, rgb(0, 0, 0) 100%);
+        background: rgb(56, 5, 5);
         clip-path: polygon(0% 100%, 0% 65.22%, 3% 63.22%, 8% 64.22%, 14% 65.22%, 19% 63.22%, 30% 67.22%, 39% 66.22%, 43% 68.22%, 49% 66.22%, 54% 67.22%, 59% 65.22%, 65% 67.22%, 71% 66.22%, 76% 66.22%, 80% 65.22%, 85% 64.22%, 89% 64.22%, 92% 61.22%, 96% 61.22%, 100% 65.22%, 100% 100%);
         z-index: 4;
     }
@@ -106,7 +106,7 @@
     }
 }
 
-@media screen and (min-width: 360px) and (max-width: 600px) {
+@media screen and (min-width: 320px) and (max-width: 600px) {
     .contactme{
 
         & .contactformbox{
@@ -119,6 +119,60 @@
 
             & .mail{
                 font-size: 36px;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1280px) and (max-width: 1536px){
+    .contactme{
+
+        & .contactformbox{
+            flex-direction: row;
+            gap: 15%;
+
+            & .heading{
+                font-size: 76px;
+            }
+
+            & .mail{
+                font-size: 56px;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1536px) and (max-width: 1610px){
+    .contactme{
+
+        & .contactformbox{
+            flex-direction: row;
+            gap: 10%;
+
+            & .heading{
+                font-size: 126px;
+            }
+
+            & .mail{
+                font-size: 76px;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1610px) and (max-width: 1920px){
+    .contactme{
+
+        & .contactformbox{
+            flex-direction: row;
+            gap: 10%;
+
+            & .heading{
+                font-size: 146px;
+            }
+
+            & .mail{
+                font-size: 86px;
             }
         }
     }
